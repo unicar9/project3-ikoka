@@ -1,2 +1,11 @@
-<h1>Users#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+<h1 class="ui centered header">Sign Up</h1>
+
+<%= render partial: 'form' %>
+
+<% if @user.errors.any? %>
+  <ul>
+  <% @user.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+  </ul>
+<% end %>
