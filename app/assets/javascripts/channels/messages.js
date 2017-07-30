@@ -16,7 +16,9 @@ App.messages = App.cable.subscriptions.create('MessagesChannel', {
       velocityX: randy(-3, 3),
       velocityY: randy(-3, 3),
       x: 400,
-      y: 400
+      y: 400,
+      shape: Math.floor(randy(0, 3)),
+      size: randy(10, 1000)
     }
     msgs.push(m)
   }
