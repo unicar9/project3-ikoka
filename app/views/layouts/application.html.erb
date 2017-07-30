@@ -10,7 +10,7 @@
     <%= cloudinary_js_config %>
   </head>
 
-  <body>
+  <body class="<%= controller_name %> <%= action_name %>">
 
     <nav>
       <% unless @current_user.present? %>
