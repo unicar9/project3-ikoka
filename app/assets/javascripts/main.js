@@ -6,6 +6,21 @@ var randy = function(min, max) {
   return (Math.random() * (max - min) + min);
 };
 
+/* -------------------------
+| one message:             |
+| has following properties |
+---------------------------*/
+
+var msgProps = {
+  content: 'haha',
+  velocityX: randy(-3, 3),
+  velocityY: randy(-3, 3),
+  x: randy(0, 800),
+  y: randy(0, 800)
+}
+
+
+
 $.getJSON('#{ /chatrooms/:id }').done(function(res){
 
 
