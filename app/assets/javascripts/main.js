@@ -2,6 +2,19 @@
 //= require p5.dom
 var msgs = msgs || [];
 
+$.getJSON('#{ /chatrooms/:id }').done(function(res){
+  for (var i = 0; i < res.length; i++) {
+    var m = {
+      content: res[i].content,
+      velocityX: 3,
+      velocityY: 3,
+      x: 400,
+      y: 400
+    };
+    msgs.push(m);
+  }
+})
+
 $(document).ready(function(){
 
 
