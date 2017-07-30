@@ -1,26 +1,17 @@
 //= require p5
 //= require p5.dom
+
+// == msgs array to store all messages in this chatroom =====
 var msgs = msgs || [];
 
+
+// our friend randy, but randy returns a float
 var randy = function(min, max) {
   return (Math.random() * (max - min) + min);
 };
 
-/* -------------------------
-| one message:             |
-| has following properties |
----------------------------*/
 
-var msgProps = {
-  content: 'haha',
-  velocityX: randy(-3, 3),
-  velocityY: randy(-3, 3),
-  x: randy(0, 800),
-  y: randy(0, 800)
-}
-
-
-
+// ======= ajax call to fetch message history =====
 $.getJSON('#{ /chatrooms/:id }').done(function(res){
 
 
@@ -38,20 +29,18 @@ $.getJSON('#{ /chatrooms/:id }').done(function(res){
     msgs.push(m);
   }
 });
+// ======= ajax call to fetch message history =====
 
 
 
 $(document).ready(function(){
 
-
+  
   if ( $('body.chatrooms.show').length ) {
 
     console.log("We're on chatrooms#show");
 
-
-
     var s = function(sketch) {
-
 
       sketch.setup = function() {
         sketch.createCanvas( 800, 800 );
