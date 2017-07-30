@@ -2,6 +2,7 @@
 // # All this logic will automatically be available in application.js.
 // # You can use CoffeeScript in this file: http://coffeescript.org/
 
+// press ENTER key to send messages instead of SUBMIT submit button
 $(document).ready(function() {
 
   $('textarea').keydown(function(e) {

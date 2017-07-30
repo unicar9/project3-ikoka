@@ -13,6 +13,7 @@
 //= require_tree ./channels
 //= require jquery
 //= require jquery_ujs
+//= require semantic-ui
 //= require p5
 //= require p5.dom
 //= require_tree .
