@@ -35,7 +35,7 @@ $.getJSON('#{ /chatrooms/:id }').done(function(res){
 
 $(document).ready(function(){
 
-  
+
   if ( $('body.chatrooms.show').length ) {
 
     console.log("We're on chatrooms#show");
