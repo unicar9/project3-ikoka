@@ -63,13 +63,13 @@ $(document).ready(function(){
           }
           if (m.shape === 1) {
             // sketch.noFill();
-            sketch.triangle(m.x, m.y, (m.x + m.size/2), (m.y - m.size), (m.x - m.size/2), (m.y - m.size)).noFill();
+            sketch.triangle(m.x, m.y, (m.x + m.size/2), (m.y - m.size), (m.x - m.size/2), (m.y - m.size));
             sketch.stroke(123);
           }
           if (m.shape === 2) {
             // sketch.noFill();
 
-            sketch.ellipse(m.x, m.y, m.size, m.size).noFill();
+            sketch.ellipse(m.x, m.y, m.size, m.size);
             sketch.stroke(123);
           }
 
