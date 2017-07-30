@@ -1,14 +1,9 @@
 <div class="">
   <h1><%= @chatroom.topic %></h1>
 
-  <div class="messages-container">
-    <% if @chatroom.messages.any? %>
-      <div id="messages">
-        <%= render partial: 'messages/message', collection: @chatroom.messages %>
-        <!-- this will iterate over all the messages and render each of them via the partial -->
-      </div>
-    <% end %>
-  </div>
+  <div id="messages"></div>
+
+
 
   <div class="input-container">
     <%= render partial: 'messages/message_form', locals: {message: @message, chatroom: @chatroom} %>
