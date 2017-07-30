@@ -1,3 +1,5 @@
+//= require p5
+//= require p5.dom
 //= require cable
 //= require_self
 //= require_tree .
