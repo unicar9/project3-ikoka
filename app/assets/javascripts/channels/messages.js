@@ -1,9 +1,16 @@
+// create msgs
 var msgs = msgs || [];
 
 App.messages = App.cable.subscriptions.create('MessagesChannel', {
   // received is a reserved function, when new content is in the channel
   received: function(data){
-    // return $('#messages').append( this.renderMessage(data) );
+  // data is the received new content(one new message submitted by one user) that is being broadcasted in the channel
+  // which we configured in messages_controller.rb
+  // data = {
+  //   message: message.content,
+  //   user: message.user
+  // }
+
     var m = {
       content: data.message,
       velocityX: 3,
@@ -12,11 +19,6 @@ App.messages = App.cable.subscriptions.create('MessagesChannel', {
       y: 400
     }
     msgs.push(m)
-  },
-
-  // renderMessage: function(msg){
-  //   return "<p><Strong>" + msg.user + ": </Strong>" + msg.message + "</p></br>"
-  //
-  // }
+  }
 
 });

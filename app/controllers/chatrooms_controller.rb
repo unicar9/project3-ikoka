@@ -9,6 +9,12 @@ class ChatroomsController < ApplicationController
   def show
 
     @message = Message.new
+    @messages = @chatroom.messages
+
+    respond_to do |format|
+      format.html {}
+      format.json {  render :json => @messages}
+    end
   end
 
   def create
