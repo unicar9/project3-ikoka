@@ -7,6 +7,19 @@ var randy = function(min, max) {
   return (Math.random() * (max - min) + min);
 };
 
+// function to get a triangle with a center point (and a size)
+var getTri = function(x, y, side){
+  var points = {};
+  points.x1 = x;
+  points.y1 = y + side * Math.sin((Math.PI / 3)) / 2;
+  points.x2 = x - side/2;
+  points.y2 = y - side * Math.sin((Math.PI / 3)) / 2;
+  points.x3 = x + side/2;
+  points.y3 = y - side * Math.sin((Math.PI / 3)) / 2;
+  return points;
+  // return a object of 3 sets of cordinates
+};
+
 
 $(document).ready(function() {
 
@@ -58,6 +71,9 @@ $(document).ready(function() {
 
         wave = new p5.Oscillator('sine');
         wave.start();
+        sketch.rectMode(sketch.RADIUS);
+        sketch.ellipseMode(sketch.RADIUS);
+        sketch.textAlign(sketch.LEFT, sketch.CENTER);
       };
 
       sketch.draw = function() {
@@ -81,12 +97,15 @@ $(document).ready(function() {
 
           if (m.shape === 0) {
             // sketch.noFill();
+
             sketch.rect(m.x, m.y, m.size, m.size ).noFill();
             sketch.stroke(193);
           }
           if (m.shape === 1) {
             // sketch.noFill();
-            sketch.triangle(m.x, m.y, (m.x + m.size/2), (m.y - m.size), (m.x - m.size/2), (m.y - m.size));
+            var points = getTri(m.x, m.y, m.size);
+            // sketch.triangle(m.x, m.y, (m.x + m.size/2), (m.y - m.size), (m.x - m.size/2), (m.y - m.size));
+            sketch.triangle(points.x1, points.y1, points.x2, points.y2, points.x3, points.y3);
             sketch.stroke(123);
           }
           if (m.shape === 2) {
@@ -102,7 +121,6 @@ $(document).ready(function() {
           if(m.y >= 600 || m.y <= 0) {
             m.velocityY *= -1
           }
-
 
 
         } // for loop
