@@ -16,4 +16,5 @@
 //= require semantic-ui
 //= require p5
 //= require p5.dom
+//= require p5.sound
 //= require_tree .

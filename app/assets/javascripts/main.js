@@ -17,6 +17,9 @@ $.getJSON('#{ /chatrooms/:id }').done(function(res){
 
   for (var i = 0; i < res.length; i++) {
     var size = randy(10, 60);
+    var notes = [60, 64, 67, 72];
+    var freq = notes[Math.floor(randy(0, 5))];
+
     var m = {
       content: res[i].content,
       velocityX: randy(-3, 3),
@@ -24,7 +27,8 @@ $.getJSON('#{ /chatrooms/:id }').done(function(res){
       x: randy(0, 800),
       y: randy(0, 800),
       shape: Math.floor(randy(0, 3)),
-      size: size
+      size: size,
+      freq: freq
     };
     msgs.push(m);
   }
@@ -39,11 +43,15 @@ $(document).ready(function(){
   if ( $('body.chatrooms.show').length ) {
 
     console.log("We're on chatrooms#show");
+    var wave;
+
 
     var s = function(sketch) {
 
       sketch.setup = function() {
         sketch.createCanvas( 800, 800 );
+
+        wave = new p5.Oscillator('sine');
       };
 
       sketch.draw = function() {
@@ -74,6 +82,7 @@ $(document).ready(function(){
           }
 
 
+
           if(m.x >= 800 || m.x <= 0) {
             m.velocityX *= -1
           }
@@ -82,11 +91,18 @@ $(document).ready(function(){
             m.velocityY *= -1
           }
 
+          wave.start();
+          sketch.frameRate(24);
+          wave.amp(1, 0.5);
+          wave.freq(m.freq);
+          wave.amp(0, 0.5);
+
         } // for loop
       };
 
     };
     var canvas = new p5(s, 'messages');
+
   }
 
 });
