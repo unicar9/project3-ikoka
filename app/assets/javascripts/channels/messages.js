@@ -29,6 +29,7 @@ App.messages = App.cable.subscriptions.create('MessagesChannel', {
     }
     msgs.push(m);
     env.play();
+    wave.freq(m.freq);
   }
 
 });

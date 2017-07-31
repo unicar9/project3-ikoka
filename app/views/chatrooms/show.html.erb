@@ -1,9 +1,38 @@
 
+<div class="ui secondary big launch right attached button">
+  <i class="icon list layout"></i>
+  <span class="text" style="display:none;">Users</span>
+</div>
+
+<div class="pusher">
   <h1><%= @chatroom.topic %></h1>
 
   <div id="messages" class="ui container segment"></div>
 
 
-  <div class="input-container">
+  <div class="input-container ui container">
     <%= render partial: 'messages/message_form', locals: {message: @message, chatroom: @chatroom} %>
   </div>
+</div>
+
+
+
+<div class="ui thin inverted sidebar vertical menu">
+
+  <div class="ui header">
+    <%= @chatroom.topic %>
+  </div>
+
+  <div class="ui middle aligned animated list">
+    <% @chatroom.users.each do |u| %>
+      <div class="item">
+        <%= cl_image_tag(u.avatar, :width=>300, :height=>300, :crop=>"crop", :gravity=>"face", :secure=>true, class: "ui avatar image") %>
+        <div class="content">
+          <%= link_to u.name, user_path(u), class: "header" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+
+</div>
