@@ -1,12 +1,9 @@
-<div class="">
+
   <h1><%= @chatroom.topic %></h1>
 
   <div id="messages" class="ui container segment"></div>
 
 
-
   <div class="input-container">
     <%= render partial: 'messages/message_form', locals: {message: @message, chatroom: @chatroom} %>
   </div>
-
-</div>

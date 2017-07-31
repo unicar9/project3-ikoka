@@ -1,3 +1,7 @@
+//= require p5
+//= require p5.dom
+//= require p5.sound
+
 // create msgs
 var msgs = msgs || [];
 
@@ -11,6 +15,9 @@ App.messages = App.cable.subscriptions.create('MessagesChannel', {
   //   user: message.user
   // }
 
+    var wave = new p5.Oscillator('sine');
+
+
     var m = {
       content: data.message,
       velocityX: randy(-3, 3),
@@ -18,7 +25,9 @@ App.messages = App.cable.subscriptions.create('MessagesChannel', {
       x: 400,
       y: 400,
       shape: Math.floor(randy(0, 3)),
-      size: randy(10, 1000)
+      size: randy(10, 100),
+      freq: wave.freq(randy(440, 880)),
+      sound: true
     }
     msgs.push(m)
   }

@@ -29,8 +29,6 @@ $(document).ready(function() {
 
       for (var i = 0; i < res.length; i++) {
         var size = randy(10, 60);
-        var notes = [60, 64, 67, 72];
-        var freq = notes[Math.floor(randy(0, 5))];
 
         var m = {
           content: res[i].content,
@@ -40,7 +38,7 @@ $(document).ready(function() {
           y: randy(0, 800),
           shape: Math.floor(randy(0, 3)),
           size: size,
-          freq: freq
+          sound: false
         };
         msgs.push(m);
       }
@@ -48,16 +46,22 @@ $(document).ready(function() {
     // ======= ajax call to fetch message history =====
 
 
+
     // ========= define the function to create new p5 instance ===========
     var s = function(sketch) {
+      // var notes = [60, 64, 67, 72];
+      // var freq = sketch.midiToFreq(notes[Math.floor(randy(0, 5))]);
+      // console.log(notes[Math.floor(randy(0, 5))]);
 
       sketch.setup = function() {
         sketch.createCanvas( canvasWidth, 800 );
 
         wave = new p5.Oscillator('sine');
+        wave.start();
       };
 
       sketch.draw = function() {
+
         sketch.background(255);
 
         for (var i = 0; i < msgs.length; i++) {
@@ -66,9 +70,17 @@ $(document).ready(function() {
           m.x += m.velocityX;
           m.y += m.velocityY;
           sketch.text(m.content, m.x, m.y );
+
+
+          if (m.sound) {
+
+            wave.amp(1, 0.5);
+            wave.freq(m.freq);
+            console.log(m.freq);
+          }
+
           if (m.shape === 0) {
             // sketch.noFill();
-
             sketch.rect(m.x, m.y, m.size, m.size ).noFill();
             sketch.stroke(193);
           }
@@ -79,11 +91,9 @@ $(document).ready(function() {
           }
           if (m.shape === 2) {
             // sketch.noFill();
-
             sketch.ellipse(m.x, m.y, m.size, m.size);
             sketch.stroke(123);
           }
-
 
           if(m.x >= canvasWidth || m.x <= 0) {
             m.velocityX *= -1
@@ -93,18 +103,18 @@ $(document).ready(function() {
             m.velocityY *= -1
           }
 
-          wave.start();
-          sketch.frameRate(24);
-          wave.amp(1, 0.5);
-          wave.freq(m.freq);
-          // wave.amp(0, 0.5);
+
 
         } // for loop
-      }
-    }; // function
+
+
+      }; // draw func
+
+    };
 
     // create a new p5 instance
     var canvas = new p5(s, 'messages');
 
-  } // if
-}); // document ready
+  }
+
+}); // end of document ready
