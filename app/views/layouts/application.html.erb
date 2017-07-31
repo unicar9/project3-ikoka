@@ -16,23 +16,80 @@
   <body class="<%= controller_name %> <%= action_name %>">
 
     <nav>
-      <% unless @current_user.present? %>
-        <%= link_to login_path do %>
-          Login
-        <% end %> |
-        <%= link_to new_user_path do %>
-          Signup
-        <% end %>
-      <% else %>
-        Hello, <%= link_to user_path(@current_user) do %>
-          <%= @current_user.name %>
-        <% end %> |
-        <%= link_to login_path, :method => :delete do %>
-          logout
-        <% end %>
-      <% end %>
+
+      <div class="ui container">
+        <div class="ui menu">
+          <div class="item">
+            <%= link_to "Explore Chatrooms", chatrooms_path, :method => :get, class: 'ui inverted purple button item' %>
+          </div>
+
+          <div class="right menu">
+            <div class="item">
+              <div class="ui search">
+                <div class="ui icon input">
+                  <input class="prompt" type="text" placeholder="Search...">
+                  <i class="search icon"></i>
+                </div>
+                <div class="results"></div>
+              </div>
+            </div>
+            <!-- right pointing dropdown -->
+            <div class="item">
+              <% unless @current_user.present? %>
+                <div class="ui top right pointing dropdown icon inverted purple button">
+                  <i class="sidebar icon"></i>
+                  <div class="menu">
+                    <div class="item">
+                      <%= link_to login_path do %>
+                      <i class="user icon"></i>
+                      Login
+                      <% end %>
+                    </div>
+                    <div class="item">
+                      <%= link_to new_user_path do %>
+                      <i class="edit icon"></i>
+                      Signup
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+              <% else %>
+                <div class="ui top right pointing dropdown icon">
+                  <%= cl_image_tag(@current_user.avatar, :width=>300, :height=>300, :crop=>"crop", :gravity=>"face", :secure=>true, class: "ui avatar image")%>
+                  <div class="menu">
+                    <div class="item">
+                      <%= link_to user_path(@current_user) do %>
+                      <i class="user icon"></i>
+                      <%= @current_user.name %>
+                      <% end %>
+                    </div>
+                    <div class="item">
+                      <%= link_to edit_user_path(@current_user) do %>
+                      <i class="edit icon"></i>
+                      Edit Profile
+                      <% end %>
+                    </div>
+                    <div class="item">
+                      <%= link_to login_path, :method => :delete do %>
+                      <i class="power icon"></i>
+                      Logout
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
     </nav>
 
-    <%= yield %>
+    <div class="" style="height:15px"></div>
+
+    <div class="ui container">
+      <%= yield %>
+
+    </div>
+
   </body>
 </html>

@@ -5,45 +5,56 @@
 var msgs = msgs || [];
 
 
-// our friend randy, but randy returns a float
+// our friend randy, randy returns a float this time
 var randy = function(min, max) {
   return (Math.random() * (max - min) + min);
 };
 
 
-// ======= ajax call to fetch message history =====
-$.getJSON('#{ /chatrooms/:id }').done(function(res){
-
-
-  for (var i = 0; i < res.length; i++) {
-    var size = randy(10, 60);
-    var m = {
-      content: res[i].content,
-      velocityX: randy(-3, 3),
-      velocityY: randy(-3, 3),
-      x: randy(0, 800),
-      y: randy(0, 800),
-      shape: Math.floor(randy(0, 3)),
-      size: size
-    };
-    msgs.push(m);
-  }
-});
-// ======= ajax call to fetch message history =====
-
-
-
 $(document).ready(function(){
 
+  // ---- initialize semantic dropdown -----
+  $('.ui.dropdown')
+    .dropdown()
+  ;
+  // ---- initialize semantic dropdown -----
+
+
+  /* ------------------------------
+  | following code only excute on |
+  |      chatromms#show page      |
+  ------------------------------ */
 
   if ( $('body.chatrooms.show').length ) {
-
     console.log("We're on chatrooms#show");
 
+    var canvasWidth = $('#messages').width();
+
+    // =============== ajax call to fetch message history ===============
+    $.getJSON('#{ /chatrooms/:id }').done(function(res){
+
+      for (var i = 0; i < res.length; i++) {
+        var size = randy(10, 60);
+        var m = {
+          content: res[i].content,
+          velocityX: randy(-3, 3),
+          velocityY: randy(-3, 3),
+          x: randy(0, 800),
+          y: randy(0, 600),
+          shape: Math.floor(randy(0, 3)),
+          size: size
+        };
+        msgs.push(m);
+      }
+    });
+    // =============== ajax call to fetch message history ===============
+
+
+    // ========= define the function to create new p5 instance ===========
     var s = function(sketch) {
 
       sketch.setup = function() {
-        sketch.createCanvas( 800, 800 );
+        sketch.createCanvas( canvasWidth, 600 );
       };
 
       sketch.draw = function() {
@@ -74,11 +85,11 @@ $(document).ready(function(){
           }
 
 
-          if(m.x >= 800 || m.x <= 0) {
+          if(m.x >= canvasWidth || m.x <= 0) {
             m.velocityX *= -1
           }
 
-          if(m.y >= 800 || m.y <= 0) {
+          if(m.y >= 600 || m.y <= 0) {
             m.velocityY *= -1
           }
 
@@ -86,7 +97,9 @@ $(document).ready(function(){
       };
 
     };
+
+    // create a new p5 instance
     var canvas = new p5(s, 'messages');
   }
 
-});
+}); // document ready
