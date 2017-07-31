@@ -34,6 +34,15 @@ $(document).ready(function() {
     console.log("We're on chatrooms#show");
 
     var wave;
+    var env;
+
+    var attackLevel = 1.0;
+    var releaseLevel = 0;
+
+    var attackTime = 0.001;
+    var decayTime = 0.3;
+    var susPercent = 0.4;
+    var releaseTime = 0.5;
 
     var canvasWidth = $('#messages').width();
 
@@ -69,8 +78,13 @@ $(document).ready(function() {
       sketch.setup = function() {
         sketch.createCanvas( canvasWidth, 800 );
 
+        env = new p5.Env();
+
         wave = new p5.Oscillator('sine');
         wave.start();
+        wave.amp(0);
+
+
         sketch.rectMode(sketch.RADIUS);
         sketch.ellipseMode(sketch.RADIUS);
         sketch.textAlign(sketch.LEFT, sketch.CENTER);
@@ -87,10 +101,15 @@ $(document).ready(function() {
           m.y += m.velocityY;
           sketch.text(m.content, m.x, m.y );
 
-
-
           if (m.sound) {
-
+            wave.freq(m.freq);
+            // env.triggerAttack();
+            // env.triggerRelease();
+            wave.amp(0.5, 1);
+            wave.amp(0, 1, 3);
+            // setTimeout(function() {
+            //   wave.stop();
+            // }, 1000);
 
           }
 

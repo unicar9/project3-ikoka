@@ -15,7 +15,7 @@ App.messages = App.cable.subscriptions.create('MessagesChannel', {
   //   user: message.user
   // }
 
-    var wave = new p5.Oscillator('sine');
+
 
 
     var m = {
@@ -26,7 +26,7 @@ App.messages = App.cable.subscriptions.create('MessagesChannel', {
       y: 400,
       shape: Math.floor(randy(0, 3)),
       size: randy(10, 100),
-      freq: wave.freq(randy(440, 880)),
+      freq: randy(440, 800),
       sound: true
     }
     msgs.push(m)
