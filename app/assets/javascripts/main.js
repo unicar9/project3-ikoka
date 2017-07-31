@@ -1,14 +1,13 @@
-//= require p5
-//= require p5.dom
+
 
 // == msgs array to store all messages in this chatroom =====
 var msgs = msgs || [];
 
 
 // our friend randy, randy returns a float this time
-var randy = function(min, max) {
-  return (Math.random() * (max - min) + min);
-};
+  var randy = function(min, max) {
+    return (Math.random() * (max - min) + min);
+  };
 
   // ---- initialize semantic dropdown -----
   $('.ui.dropdown')
@@ -21,6 +20,7 @@ var randy = function(min, max) {
   | following code only excute on |
   |      chatromms#show page      |
   ------------------------------ */
+$(document).ready(function() {
 
   if ( $('body.chatrooms.show').length ) {
     console.log("We're on chatrooms#show");
@@ -102,7 +102,7 @@ var randy = function(min, max) {
           sketch.frameRate(24);
           wave.amp(1, 0.5);
           wave.freq(m.freq);
-          wave.amp(0, 0.5);
+          // wave.amp(0, 0.5);
 
         } // for loop
       };
