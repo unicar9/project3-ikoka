@@ -1,25 +1,50 @@
-<h1>Log-in to your account</h1>
+<div class ="ui three column centered grid">
 
-<%= form_tag(login_path) do %>
-  <div class="field">
-    <%= email_field_tag :email, nil, placeholder: "E-mail address" %>
+  <div class="column">
+
+    <h1 class="ui center aligned header">Log-in to your account</h1>
+    <%= form_tag(login_path, class: 'ui large form')  do  %>
+     <div class="ui padded stacked segment">
+
+       <div class="field">
+         <div class="ui left icon input">
+           <i class="user icon"></i>
+           <%= email_field_tag :email, nil, placeholder: "E-mail address" %>
+         </div>
+       </div>
+
+       <div class="field">
+         <div class="ui left icon input">
+           <i class="lock icon"></i>
+           <%=  password_field_tag :password, nil, placeholder: "Password" %>
+         </div>
+       </div>
+
+       <div class="field">
+        <div class="ui fluid checkbox">
+          <input type="checkbox" name="example">
+          <label>Remember me</label>
+        </div>
+       </div>
+
+       <%= submit_tag "Login", class: 'ui fluid button purple' %>
+
+     </div>
+    <% end %>
+
+    <% if flash[:error].present? %>
+      <div class="ui error message">
+        <p><%= flash[:error] %></p>
+      </div>
+    <% end %>
+
+    <div class="ui message">
+      New to us? <%= link_to 'Sign Up', new_user_path  %>
+    </div>
+
+    <div class="ui center aligned header">
+
+    </div>
+
   </div>
-
-  <div class="field">
-     <%=  password_field_tag :password, nil, placeholder: "Password" %>
-  </div>
-
-  <%= submit_tag "Login", class: 'ui fluid button purple' %>
-
-<% end %>
-
-<% if flash[:error].present? %>
-  <div class="ui error message">
-    <p><%= flash[:error] %></p>
-  </div>
-<% end %>
-
-<div class="ui message">
-  New to us?
-  <a href="/users/new">Sign Up</a>
 </div>
