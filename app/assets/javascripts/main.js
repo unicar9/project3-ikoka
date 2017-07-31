@@ -2,6 +2,15 @@
 // == msgs array to store all messages in this chatroom =====
 var msgs = msgs || [];
 
+var wave, env;
+env = new p5.Env();
+env.setADSR(0.001, 0.2, 0.2, 0.5);
+env.setRange(1, 0);
+wave = new p5.Oscillator('sine');
+wave.amp(env);
+wave.start();
+
+
 // our friend randy, randy returns a float this time
 var randy = function(min, max) {
   return (Math.random() * (max - min) + min);
@@ -23,7 +32,7 @@ var getTri = function(x, y, side){
 
 $(document).ready(function() {
 
-  // ---- initialize semantic dropdown -----
+  // ---- initialize semantic-ui actions -----
   $('.ui.dropdown').dropdown();
 
   /* ------------------------------
@@ -33,7 +42,7 @@ $(document).ready(function() {
   if ( $('body.chatrooms.show').length ) {
     console.log("We're on chatrooms#show");
 
-    var wave;
+    var wave, env;
 
     var canvasWidth = $('#messages').width();
 
@@ -48,7 +57,7 @@ $(document).ready(function() {
           velocityX: randy(-3, 3),
           velocityY: randy(-3, 3),
           x: randy(0, canvasWidth),
-          y: randy(0, 800),
+          y: randy(0, 600),
           shape: Math.floor(randy(0, 3)),
           size: size,
           sound: false
@@ -67,18 +76,24 @@ $(document).ready(function() {
       // console.log(notes[Math.floor(randy(0, 5))]);
 
       sketch.setup = function() {
-        sketch.createCanvas( canvasWidth, 800 );
-
-        wave = new p5.Oscillator('sine');
-        wave.start();
+        sketch.createCanvas( canvasWidth, 600 );
         sketch.rectMode(sketch.RADIUS);
         sketch.ellipseMode(sketch.RADIUS);
         sketch.textAlign(sketch.LEFT, sketch.CENTER);
+
+        // env = new p5.Env();
+        // env.setADSR(0.001, 0.2, 0.2, 0.5);
+        // env.setRange(1, 0);
+        // wave = new p5.Oscillator('sine');
+        // wave.amp(env);
+        // wave.start();
+        // wave.freq(220)
+
       };
 
       sketch.draw = function() {
 
-        sketch.background(255);
+        sketch.background(220);
 
         for (var i = 0; i < msgs.length; i++) {
 
@@ -90,9 +105,6 @@ $(document).ready(function() {
 
           if (m.sound) {
 
-            wave.amp(1, 0.5);
-            wave.freq(m.freq);
-            console.log(m.freq);
           }
 
           if (m.shape === 0) {

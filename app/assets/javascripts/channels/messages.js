@@ -5,6 +5,8 @@
 // create msgs
 var msgs = msgs || [];
 
+
+
 App.messages = App.cable.subscriptions.create('MessagesChannel', {
   // received is a reserved function, when new content is in the channel
   received: function(data){
@@ -14,9 +16,6 @@ App.messages = App.cable.subscriptions.create('MessagesChannel', {
   //   message: message.content,
   //   user: message.user
   // }
-
-    var wave = new p5.Oscillator('sine');
-
 
     var m = {
       content: data.message,
@@ -29,7 +28,8 @@ App.messages = App.cable.subscriptions.create('MessagesChannel', {
       freq: wave.freq(randy(440, 880)),
       sound: true
     }
-    msgs.push(m)
+    msgs.push(m);
+    env.play();
   }
 
 });
