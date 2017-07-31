@@ -27,12 +27,10 @@ var randy = function(min, max) {
 
     var wave;
 
-
     var canvasWidth = $('#messages').width();
 
     // ======= ajax call to fetch message history =====
     $.getJSON('#{ /chatrooms/:id }').done(function(res){
-
 
       for (var i = 0; i < res.length; i++) {
         var size = randy(10, 60);
