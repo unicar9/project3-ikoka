@@ -105,13 +105,11 @@ $(document).ready(function() {
           // wave.amp(0, 0.5);
 
         } // for loop
-      };
-
-    };
+      }
+    }; // function
 
     // create a new p5 instance
     var canvas = new p5(s, 'messages');
 
-  }
-
+  } // if
 }); // document ready
