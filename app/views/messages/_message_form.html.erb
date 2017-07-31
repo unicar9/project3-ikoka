@@ -2,11 +2,12 @@
 
 
   <div class="ui left corner labeled fluid input">
-    <%= f.text_field :content, data: {textarea: "message"}, placeholder: "write something to create..." %>
+    <%= f.text_field :content, data: {textarea: "message"}, placeholder: "write something and press ENTER to send..." %>
     <div class="ui left corner label">
       <i class="write icon"></i>
     </div>
   </div>
+
 
 
   <%= f.hidden_field :chatroom_id, value: chatroom.id %>
