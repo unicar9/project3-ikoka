@@ -13,7 +13,7 @@
       </div>
 
       <div class="required field">
-        <%= f.label :password_confirmation %>
+        <%= f.label "Confirm Password" %>
         <%= f.password_field :password_confirmation %>
       </div>
 
@@ -26,6 +26,7 @@
         <%= f.label :avatar %>
         <%= f.cl_image_upload :avatar, :id => 'upload' %>
       </div>
+
 
       <button class="ui purple labeled icon button">
         Create New Account

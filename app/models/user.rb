@@ -4,5 +4,5 @@ class User < ApplicationRecord
   validates :name, presence: true
 
   has_many :messages
-  has_many :chatrooms, through: :messages
+  has_many :chatrooms, -> { uniq }, through: :messages
 end

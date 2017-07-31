@@ -1,7 +1,13 @@
 <%= form_for message, remote: true, authenticity_token: true do |f| %>
 
-  <%= f.label :your_message %>
-  <%= f.text_area :content, data: {textarea: "message"} %>
+
+  <div class="ui left corner labeled fluid input">
+    <%= f.text_field :content, data: {textarea: "message"}, placeholder: "write something to create..." %>
+    <div class="ui left corner label">
+      <i class="write icon"></i>
+    </div>
+  </div>
+
 
   <%= f.hidden_field :chatroom_id, value: chatroom.id %>
   <%= f.hidden_field :user, value: @current_user %>

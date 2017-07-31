@@ -12,6 +12,6 @@
 <h4>Chatrooms:</h4>
 <ul>
   <% @user.chatrooms.each do |c| %>
-    <li> <%= c.topic %></li>
+    <li> <%= link_to c.topic, chatroom_path(c) %></li>
   <% end %>
 </ul>

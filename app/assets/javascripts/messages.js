@@ -5,11 +5,11 @@
 // press ENTER key to send messages instead of SUBMIT submit button
 $(document).ready(function() {
 
-  $('textarea').keydown(function(e) {
+  $('input[type=text]').keydown(function(e) {
     if (e.keyCode == 13) {
       e.preventDefault();
       $("form").submit();
-      $('textarea').val('');
+      $(this).val('');
     }
   });
 
