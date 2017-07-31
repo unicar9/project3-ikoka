@@ -1,4 +1,5 @@
-
+// create a new Web Audio API context
+var ac = new AudioContext();
 
 // == msgs array to store all messages in this chatroom =====
 var msgs = msgs || [];
@@ -63,8 +64,8 @@ $(document).ready(function() {
       sketch.setup = function() {
         sketch.createCanvas( canvasWidth, 800 );
 
-        wave = new p5.Oscillator('sine');
-        wave.start();
+        // wave = new p5.Oscillator('sine');
+        // wave.start();
       };
 
       sketch.draw = function() {
@@ -79,16 +80,15 @@ $(document).ready(function() {
           sketch.text(m.content, m.x, m.y );
 
 
+
           if (m.sound) {
 
-            wave.amp(1, 0.5);
-            wave.freq(m.freq);
-            console.log(m.freq);
+
           }
 
           if (m.shape === 0) {
             // sketch.noFill();
-            sketch.rect(m.x, m.y, m.size, m.size ).noFill();
+            sketch.rect(m.x, m.y, m.size, m.size);
             sketch.stroke(193);
           }
           if (m.shape === 1) {
