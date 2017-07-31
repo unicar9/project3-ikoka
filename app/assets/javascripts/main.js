@@ -1,27 +1,22 @@
 
-
 // == msgs array to store all messages in this chatroom =====
 var msgs = msgs || [];
 
-
 // our friend randy, randy returns a float this time
-  var randy = function(min, max) {
-    return (Math.random() * (max - min) + min);
-  };
+var randy = function(min, max) {
+  return (Math.random() * (max - min) + min);
+};
+
+
+$(document).ready(function() {
 
   // ---- initialize semantic dropdown -----
-  $('.ui.dropdown')
-    .dropdown()
-  ;
-  // ---- initialize semantic dropdown -----
-
+  $('.ui.dropdown').dropdown();
 
   /* ------------------------------
   | following code only excute on |
   |      chatromms#show page      |
   ------------------------------ */
-$(document).ready(function() {
-
   if ( $('body.chatrooms.show').length ) {
     console.log("We're on chatrooms#show");
 
