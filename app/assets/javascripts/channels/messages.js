@@ -5,6 +5,8 @@
 // create msgs
 var msgs = msgs || [];
 
+
+
 App.messages = App.cable.subscriptions.create('MessagesChannel', {
   // received is a reserved function, when new content is in the channel
   received: function(data){
@@ -15,9 +17,6 @@ App.messages = App.cable.subscriptions.create('MessagesChannel', {
   //   user: message.user
   // }
 
-
-
-
     var m = {
       content: data.message,
       velocityX: randy(-3, 3),
@@ -27,9 +26,9 @@ App.messages = App.cable.subscriptions.create('MessagesChannel', {
       shape: Math.floor(randy(0, 3)),
       size: randy(10, 100),
       freq: randy(440, 800),
-      sound: true
     }
-    msgs.push(m)
+    msgs.push(m);
+    env.play();
   }
 
 });
