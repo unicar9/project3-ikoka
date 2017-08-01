@@ -5,6 +5,6 @@ class MessagesChannel < ApplicationCable::Channel
     # stream_from "private_channel_#{}"
   end
 
-
+  
 
 end
