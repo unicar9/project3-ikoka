@@ -24,10 +24,24 @@
 
       <div class="field">
         <%= f.label :avatar %>
+        <!-- <div class="ui padded segment" id="uploader">
+          <div id="dragndrop1">
+              Drag and Drop an Image Here
+          </div>
+          <div id="croppie"></div>
+        </div>
+        <input type="hidden" style="display:none" id="avatar"> -->
         <!-- <#%= f.cl_image_upload :avatar, :id => 'upload_widget_opener' %> -->
         <!-- <p id="upload_widget_opener">Upload multiple images</p> -->
-        <span></span>
-        <input type="file" id="upload_widget_opener" accept="image/*">
+        <!-- <span></span>
+
+        <input type="file" id="upload_widget_opener" accept="image/*"> -->
+        <div id="uploader" class="placeholder">
+            Drag and Drop Your Image Here to Crop
+            <img id="result" src="" />
+        </div>
+        <!-- <input type="file" name="userprofile_picture" id="filePhoto" /> -->
+        <%= f.cl_image_upload :avatar, :id => 'upload', :style => "display:none" %>
       </div>
 
 
@@ -35,8 +49,6 @@
         Create New Account
         <i class="add icon"></i>
       </button>
-
-      <div id="upload-demo"></div>
 
       <% end %>
     </div>
