@@ -16,7 +16,7 @@ var randy = function(min, max) {
   return (Math.random() * (max - min) + min);
 };
 
-// function to get a triangle with a center point (and a size)
+// function to get a triangle with a center point (and the length of side)
 var getTri = function(x, y, side){
   var points = {};
   points.x1 = x;
@@ -26,7 +26,7 @@ var getTri = function(x, y, side){
   points.x3 = x + side/2;
   points.y3 = y - side * Math.sin((Math.PI / 3)) / 2;
   return points;
-  // return a object of 3 sets of cordinates
+  // return a object of 3 sets of cordinates, each represents a point of the triangle
 };
 
 
@@ -52,13 +52,7 @@ $(document).ready(function() {
   if ( $('body.chatrooms.show').length ) {
     console.log("We're on chatrooms#show");
 
-<<<<<<< HEAD
-=======
-    var wave, env;
-    var bg;
 
-
->>>>>>> 9aa2112f232d4af7ef0378ee2ac0ea6751759ca8
     var canvasWidth = $('#messages').width();
 
     // ======= ajax call to fetch message history =====
@@ -103,14 +97,9 @@ $(document).ready(function() {
         sketch.rectMode(sketch.RADIUS);
         sketch.ellipseMode(sketch.RADIUS);
         sketch.textAlign(sketch.LEFT, sketch.CENTER);
-<<<<<<< HEAD
-        bg = sketch.loadImage('/assets/gradient-bg-3.jpg');
-        sketch.colorMode(sketch.HSB);
-=======
         sketch.colorMode(sketch.HSB, 255);
         bg = sketch.loadImage("/assets/bg.jpg");
 
->>>>>>> 9aa2112f232d4af7ef0378ee2ac0ea6751759ca8
       };
 
       sketch.draw = function() {
@@ -118,7 +107,6 @@ $(document).ready(function() {
         sketch.background(bg);
 
         for (var i = 0; i < msgs.length; i++) {
-
 
           var m = msgs[i];
           m.x += m.velocityX;
@@ -131,7 +119,7 @@ $(document).ready(function() {
             sketch.rect(m.x, m.y, m.size, m.size ).noFill();
           }
           if (m.shape === 1) {
-            var points = getTri(m.x, m.y, m.size);
+            var points = getTri(m.x, m.y, m.size);   // using the msg's x,y coordinate(m.x, m.y) and size value(m.size) to genereate a triangle
             sketch.triangle(points.x1, points.y1, points.x2, points.y2, points.x3, points.y3).noFill();
           }
           if (m.shape === 2) {
@@ -145,7 +133,6 @@ $(document).ready(function() {
           if(m.y >= 600 || m.y <= 0) {
             m.velocityY *= -1
           }
-
 
         } // for loop
 
