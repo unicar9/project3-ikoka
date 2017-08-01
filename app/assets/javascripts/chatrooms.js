@@ -7,6 +7,7 @@ $(document).ready(function() {
   // .sidebar('overlay')
   // .sidebar('toggle');
 
+  // launch button animation and toggle sidebar=========================
   $(".launch.button").mouseenter(function(){
 		$(this).stop().animate({width: '120px'}, 300,
              function(){$(this).find('.text').show();});
@@ -24,16 +25,28 @@ $(document).ready(function() {
   });
 
 
+  // semantic ui autocomplete search=========================
   $('.ui.search').search({
     apiSettings: {
-      url: '/users/search?term={query}'
+      url: '/users/search?term={query}',
+      minCharacters : 3,
+      onResponse: function(results) {
+        var response = {
+          results: []
+        };
+        $.each(results, function(index, item) {
+          response.results.push({
+            title: item.name
+          });
+        });
+        return response
+      },
     },
-    fields: {
-      title   : 'name'
-    },
-    minCharacters : 3
   });
+  // semantic ui autocomplete search=========================
 
+
+  // list search results with add buttons =========================
 
   $('#user-search-button').on('click', function(){
 
@@ -56,6 +69,8 @@ $(document).ready(function() {
     });
 
   });
+
+  // add users to current chatroom============================
 
   $(document).on('click', '.add-user', function(){
 
