@@ -34,6 +34,16 @@ $(document).ready(function() {
 
   // ---- initialize semantic-ui actions -----
   $('.ui.dropdown').dropdown();
+  $('.ui.dimmable').dimmer('show');
+  //------------------------------------------
+
+  $('#new-chatroom').on('click', function(){
+    $('.ui.modal.new-chatroom').modal('show');
+  });
+
+  $('#save-chatroom').on('click', function(){
+    $('.ui.modal.new-chatroom').modal('hide');
+  });
 
   /* ------------------------------
   | following code only excute on |
@@ -51,6 +61,7 @@ $(document).ready(function() {
 
       for (var i = 0; i < res.length; i++) {
         var size = randy(10, 60);
+        var speedRotation = randy(-3, 3);
 
         var m = {
           content: res[i].content,
@@ -59,7 +70,8 @@ $(document).ready(function() {
           x: randy(0, canvasWidth),
           y: randy(0, 600),
           shape: Math.floor(randy(0, 3)),
-          size: size
+          size: size,
+          speedRotation: speedRotation
         };
         msgs.push(m);
       }
@@ -80,14 +92,6 @@ $(document).ready(function() {
         sketch.ellipseMode(sketch.RADIUS);
         sketch.textAlign(sketch.LEFT, sketch.CENTER);
 
-        // env = new p5.Env();
-        // env.setADSR(0.001, 0.2, 0.2, 0.5);
-        // env.setRange(1, 0);
-        // wave = new p5.Oscillator('sine');
-        // wave.amp(env);
-        // wave.start();
-        // wave.freq(220)
-
       };
 
       sketch.draw = function() {
@@ -101,23 +105,20 @@ $(document).ready(function() {
           m.y += m.velocityY;
           sketch.text(m.content, m.x, m.y );
 
-          if (m.shape === 0) {
-            // sketch.noFill();
 
-            sketch.rect(m.x, m.y, m.size, m.size ).noFill();
+          if (m.shape === 0) {
             sketch.stroke(193);
+            sketch.rect(m.x, m.y, m.size, m.size ).noFill();
           }
           if (m.shape === 1) {
-            // sketch.noFill();
             var points = getTri(m.x, m.y, m.size);
-            // sketch.triangle(m.x, m.y, (m.x + m.size/2), (m.y - m.size), (m.x - m.size/2), (m.y - m.size));
-            sketch.triangle(points.x1, points.y1, points.x2, points.y2, points.x3, points.y3);
             sketch.stroke(123);
+            // sketch.triangle(m.x, m.y, (m.x + m.size/2), (m.y - m.size), (m.x - m.size/2), (m.y - m.size));
+            sketch.triangle(points.x1, points.y1, points.x2, points.y2, points.x3, points.y3).noFill();
           }
           if (m.shape === 2) {
-            // sketch.noFill();
-            sketch.ellipse(m.x, m.y, m.size, m.size);
             sketch.stroke(123);
+            sketch.ellipse(m.x, m.y, m.size, m.size).noFill();
           }
 
           if(m.x >= canvasWidth || m.x <= 0) {

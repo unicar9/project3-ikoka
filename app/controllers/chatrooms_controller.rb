@@ -18,10 +18,19 @@ class ChatroomsController < ApplicationController
   end
 
   def create
+    @chatroom = Chatroom.create chatroom_params
+    @message = Message.create content:"#{@current_user.name} created this world", chatroom_id:@chatroom.id, user_id:@current_user.id
+    @chatroom.save
+    redirect_to chatroom_path(@chatroom)
+
   end
 
   private
   def get_chatroom
     @chatroom = Chatroom.find params["id"]
+  end
+
+  def chatroom_params
+    params.require(:chatroom).permit(:topic, :description, :cover)
   end
 end
