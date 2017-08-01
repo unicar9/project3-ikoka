@@ -10,7 +10,7 @@ var msgs = msgs || [];
 App.messages = App.cable.subscriptions.create('MessagesChannel', {
   // received is a reserved function, when new content is in the channel
   received: function(data){
-    // data is the received new content(one new message submitted by one user) that is being broadcasted in the channel
+    // the passed in variable (data) is the received new content(one new message submitted by one user) that is being broadcasted in the channel
     // which we configured in messages_controller.rb
     // data = {
     //   message: message.content,
@@ -27,7 +27,7 @@ App.messages = App.cable.subscriptions.create('MessagesChannel', {
       size: randy(10, 100),
       freq: randy(440, 800),
       hue: randy(0, 255)
-    }
+    };
     msgs.push(m);
     env.play();
     wave.freq(m.freq);

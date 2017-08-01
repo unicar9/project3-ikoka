@@ -26,7 +26,7 @@ var getTri = function(x, y, side){
   points.x3 = x + side/2;
   points.y3 = y - side * Math.sin((Math.PI / 3)) / 2;
   return points;
-  // return a object of 3 sets of cordinates, each represents a point of the triangle
+  // return a object of 3 sets of x-y coordinates, each represents a point of the triangle
 };
 
 
@@ -34,7 +34,11 @@ $(document).ready(function() {
 
   // ---- initialize semantic-ui actions -----
   $('.ui.dropdown').dropdown();
-  $('.ui.dimmable').dimmer('show');
+
+  $('.dimmable').hover(
+    function(){ $(this).find('.ui.dimmer').dimmer('show') },
+    function(){ $(this).find('.ui.dimmer').dimmer('hide') }
+  );
   //------------------------------------------
 
   $('#new-chatroom').on('click', function(){
@@ -44,6 +48,7 @@ $(document).ready(function() {
   $('#save-chatroom').on('click', function(){
     $('.ui.modal.new-chatroom').modal('hide');
   });
+  //------------------------------------------
 
   /* ------------------------------
   | following code only excute on |
@@ -85,20 +90,25 @@ $(document).ready(function() {
     // ========= define the function to create new p5 instance ===========
     var s = function(sketch) {
 
-      // var notes = [60, 64, 67, 72];
-      // var freq = sketch.midiToFreq(notes[Math.floor(randy(0, 5))]);
-      // console.log(notes[Math.floor(randy(0, 5))]);
-
       var bg;
 
       sketch.setup = function() {
+
+        // create canvas based on the parent element (ui segment)'s width
         sketch.createCanvas( canvasWidth, 600 );
-        // staring from the center points
+
+        // mode RADIUS allow drawing the shape (rect ellipse) staring from the center points
         sketch.rectMode(sketch.RADIUS);
         sketch.ellipseMode(sketch.RADIUS);
+
+        // set text alignment: horizontally left align, vertically center align
         sketch.textAlign(sketch.LEFT, sketch.CENTER);
+
+        // set color mode HSB
         sketch.colorMode(sketch.HSB, 255);
-        bg = sketch.loadImage("/assets/bg.jpg");
+
+        // set canvas background
+        bg = sketch.loadImage("/assets/gradient-bg-3.jpg");
 
       };
 
@@ -144,5 +154,9 @@ $(document).ready(function() {
     var canvas = new p5(s, 'messages');
 
   } // if
+  /* ------------------------------
+  |   above code only excute on   |
+  |     chatromms#show page       |
+  ------------------------------ */
 
 }); // end of document ready
