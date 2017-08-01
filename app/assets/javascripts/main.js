@@ -52,8 +52,6 @@ $(document).ready(function() {
   if ( $('body.chatrooms.show').length ) {
     console.log("We're on chatrooms#show");
 
-    var wave, env;
-
     var canvasWidth = $('#messages').width();
 
     // ======= ajax call to fetch message history =====
@@ -86,17 +84,20 @@ $(document).ready(function() {
       // var freq = sketch.midiToFreq(notes[Math.floor(randy(0, 5))]);
       // console.log(notes[Math.floor(randy(0, 5))]);
 
+      var bg;
+
       sketch.setup = function() {
         sketch.createCanvas( canvasWidth, 600 );
         sketch.rectMode(sketch.RADIUS);
         sketch.ellipseMode(sketch.RADIUS);
         sketch.textAlign(sketch.LEFT, sketch.CENTER);
-
+        bg = sketch.loadImage('/assets/gradient-bg-3.jpg');
+        sketch.colorMode(sketch.HSB);
       };
 
       sketch.draw = function() {
 
-        sketch.background(220);
+        sketch.background(bg);
 
         for (var i = 0; i < msgs.length; i++) {
 
@@ -132,14 +133,13 @@ $(document).ready(function() {
 
         } // for loop
 
-
       }; // draw func
 
-    };
+    } // s func
 
     // create a new p5 instance
     var canvas = new p5(s, 'messages');
 
-  }
+  } // if
 
 }); // end of document ready
