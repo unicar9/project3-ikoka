@@ -26,6 +26,7 @@ App.messages = App.cable.subscriptions.create('MessagesChannel', {
       shape: Math.floor(randy(0, 3)),
       size: randy(10, 100),
       freq: randy(440, 800),
+      hue: randy(0, 255)
     }
     msgs.push(m);
     env.play();

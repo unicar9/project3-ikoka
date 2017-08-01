@@ -53,6 +53,8 @@ $(document).ready(function() {
     console.log("We're on chatrooms#show");
 
     var wave, env;
+    var bg;
+
 
     var canvasWidth = $('#messages').width();
 
@@ -62,6 +64,8 @@ $(document).ready(function() {
       for (var i = 0; i < res.length; i++) {
         var size = randy(10, 60);
         var speedRotation = randy(-3, 3);
+        var hue = randy(0, 255);
+
 
         var m = {
           content: res[i].content,
@@ -71,6 +75,7 @@ $(document).ready(function() {
           y: randy(0, 600),
           shape: Math.floor(randy(0, 3)),
           size: size,
+          hue: hue,
           speedRotation: speedRotation
         };
         msgs.push(m);
@@ -82,42 +87,44 @@ $(document).ready(function() {
 
     // ========= define the function to create new p5 instance ===========
     var s = function(sketch) {
+
       // var notes = [60, 64, 67, 72];
       // var freq = sketch.midiToFreq(notes[Math.floor(randy(0, 5))]);
       // console.log(notes[Math.floor(randy(0, 5))]);
 
       sketch.setup = function() {
         sketch.createCanvas( canvasWidth, 600 );
+        // staring from the center points
         sketch.rectMode(sketch.RADIUS);
         sketch.ellipseMode(sketch.RADIUS);
         sketch.textAlign(sketch.LEFT, sketch.CENTER);
+        sketch.colorMode(sketch.HSB, 255);
+        bg = sketch.loadImage("/assets/bg.jpg");
 
       };
 
       sketch.draw = function() {
 
-        sketch.background(220);
+        sketch.background(bg);
 
         for (var i = 0; i < msgs.length; i++) {
+
 
           var m = msgs[i];
           m.x += m.velocityX;
           m.y += m.velocityY;
+          sketch.stroke(m.hue, 200, 255);
           sketch.text(m.content, m.x, m.y );
 
 
           if (m.shape === 0) {
-            sketch.stroke(193);
             sketch.rect(m.x, m.y, m.size, m.size ).noFill();
           }
           if (m.shape === 1) {
             var points = getTri(m.x, m.y, m.size);
-            sketch.stroke(123);
-            // sketch.triangle(m.x, m.y, (m.x + m.size/2), (m.y - m.size), (m.x - m.size/2), (m.y - m.size));
             sketch.triangle(points.x1, points.y1, points.x2, points.y2, points.x3, points.y3).noFill();
           }
           if (m.shape === 2) {
-            sketch.stroke(123);
             sketch.ellipse(m.x, m.y, m.size, m.size).noFill();
           }
 
