@@ -17,4 +17,5 @@
 //= require p5
 //= require p5.dom
 //= require p5.sound
+//= require croppie
 //= require_tree .

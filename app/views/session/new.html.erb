@@ -22,10 +22,15 @@
 
        <div class="field">
         <div class="ui fluid checkbox">
-          <input type="checkbox" name="example">
+          <%= check_box_tag :remember_me, 1, params[:remember_me] %>
           <label>Remember me</label>
         </div>
+
+        <span id="forget">
+           <%= link_to "forgotten password?", new_password_reset_path %>
+        </span>
        </div>
+
 
        <%= submit_tag "Login", class: 'ui fluid button purple' %>
 

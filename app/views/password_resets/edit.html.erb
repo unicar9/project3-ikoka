@@ -1,0 +1,35 @@
+<div class ="ui three column centered grid">
+  <div class="column">
+
+    <h1 class="ui center aligned header">Reset Password</h1>
+
+    <%= form_for @user, :url => password_reset_path(params[:id]), class: 'ui large form' do |f| %>
+      <div class="ui padded stacked segment">
+
+        <div class="field">
+          <div class="ui left icon input">
+            <i class="lock icon"></i>
+            <%= password_field_tag :password, nil, placeholder: "Password" %>
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="ui left icon input">
+            <i class="lock icon"></i>
+            <%= password_field_tag :password_confirmation, nil, placeholder: "Confirm Password" %>
+          </div>
+        </div>
+
+        <div class="actions"><%= submit_tag "Update Password", class: 'ui fluid button purple' %></div>
+
+      </div>
+    <% end %>
+
+    <% if flash[:error].present? %>
+      <div class="ui error message">
+        <p><%= flash[:error] %></p>
+      </div>
+    <% end %>
+
+  </div>
+</div>

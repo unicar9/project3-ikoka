@@ -32,6 +32,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'cloudinary'
 gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass'
 
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

@@ -1,0 +1,22 @@
+<div class ="ui three column centered grid">
+  <div class="column">
+
+    <h1 class="ui center aligned header">Reset Password</h1>
+
+    <%= form_tag(password_resets_path, :method => :post, class: 'ui large form') do %>
+      <div class="ui padded stacked segment">
+
+        <div class="field">
+          <div class="ui left icon input">
+            <i class="user icon"></i>
+            <%= email_field_tag :email, nil, placeholder: "E-mail address" %>
+          </div>
+        </div>
+
+        <div class="actions"><%= submit_tag "Reset Password", class: 'ui fluid button purple' %></div>
+
+      </div>
+    <% end %>
+
+  </div>
+</div>

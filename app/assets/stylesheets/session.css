@@ -5,3 +5,7 @@
 .ui.message {
   text-align: center;
 }
+
+#forget {
+  float: right;
+}
