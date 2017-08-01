@@ -1,17 +1,50 @@
-<h1>My Account</h1>
+<div class="ui container">
+  <h1>My Account</h1>
 
-<%= link_to cl_image_tag(@user.avatar, :width=>150, :height=>150, :crop=>"crop", :gravity=>"face", :secure=>true)%>
+  <%= link_to cl_image_tag(@user.avatar, :width=>150, :height=>150, :crop=>"crop", :gravity=>"face", :secure=>true)%>
 
-<h2> <%= @user.name %> </h2>
-<h4> <%= @user.email %> </h4>
+  <h2> <%= @user.name %> </h2>
+  <h4> <%= @user.email %> </h4>
 
-<% if @current_user == @user %>
-<%= link_to 'Edit Profile', edit_user_path(@user), class: 'ui button' %>
-<% end %>
-
-<h4>Chatrooms:</h4>
-<ul>
-  <% @user.chatrooms.each do |c| %>
-    <li> <%= link_to c.topic, chatroom_path(c) %></li>
+  <% if @current_user == @user %>
+    <%= link_to 'Edit Profile', edit_user_path(@user), class: 'ui button' %>
+    <%= link_to 'Create Chatroom', '#', class:"ui teal button", id:"new-chatroom" %>
   <% end %>
-</ul>
+
+  <h4>Chatrooms:</h4>
+
+  <div class="ui special cards">
+    <div class="card">
+      <div class="center">
+        <i class="big add icon"></i>
+      </div>
+    </div>
+    <% @user.chatrooms.each do |c| %>
+    <div class="card">
+      <div class="blurring dimmable image">
+        <div class="ui dimmer">
+          <div class="content">
+            <div class="center">
+              <%= link_to "Join", chatroom_path(c), class:"ui inverted button" %>
+            </div>
+          </div>
+        </div>
+        <%= image_tag c.cover  %>
+      </div>
+      <div class="content">
+        <%= link_to c.topic, chatroom_path(c), class:"header" %>
+        <div class="meta">
+          <span class="date">Created on <%= c.created_at.strftime("%d %b %Y") %>  </span>
+        </div>
+      </div>
+      <div class="extra content">
+        <a>
+          <i class="users icon"></i>
+          <%= c.users.count %> users are having fun
+        </a>
+      </div>
+    </div>
+    <% end %>
+  </div>
+
+</div>

@@ -10,9 +10,10 @@
 puts "ikoka koka koka planting...."
 
 User.destroy_all
-u1 = User.create name:"unicar", email:"unicar9@gmail.com", password:"panda", avatar:"https://fillmurray.com/100/100",is_admin:true
-u2 = User.create name:"panda", email:"panda@gmail.com", password:"panda", avatar:"https://fillmurray.com/100/100"
-
+u1 = User.create name:"unicar", email:"unicar9@gmail.com", password:"panda", avatar:"https://fillmurray.com/100/100", is_admin:true
+u2 = User.create name:"panda", email:"panda@gmail.com", password:"panda", avatar:"https://fillmurray.com/100/100", is_admin:true
+u3 = User.create name:"lingxiao", email:"lingxiao@gmail.com", password:"panda", avatar:"https://robohash.org/lingxiao?size=100x100&set=set2&bgset=bg1"
+u4 = User.create name:"zhuzhu", email:"zhuzhu@gmail.com", password:"panda", avatar:"https://robohash.org/zhuzhu?size=100x100&set=set2&bgset=bg1"
 
 Chatroom.destroy_all
 c1 = Chatroom.create topic:"Welcome to iKoka", description:"iKoka is awesome!", cover:"http://fillmurray.com/400/200"
