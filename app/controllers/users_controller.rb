@@ -3,6 +3,12 @@ class UsersController < ApplicationController
   before_action :check_if_admin, only: [:index]
   before_action :get_user, only: [:show, :edit, :update]
 
+  def search
+    @users = User.where('email like ?', "%#{params[:term]}%")
+    render json: @users if @users.present?
+
+  end
+
   def index
     @users = User.all
   end

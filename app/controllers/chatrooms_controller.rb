@@ -1,6 +1,19 @@
 class ChatroomsController < ApplicationController
   before_action :check_if_logged_in
-  before_action :get_chatroom, only: [:show]
+  before_action :get_chatroom, only: [:show, :add_user]
+
+  def add_user
+    user = User.find_by name:params[:name]
+    message = Message.new
+    message.content = "#{user.name} has joined this chatroom!!!!!"
+    message.user = user
+    message.chatroom = @chatroom
+    if message.save
+      ActionCable.server.broadcast 'messages', message: message.content, user: message.user.name
+
+      head :ok
+    end
+  end
 
   def index
     @chatrooms = Chatroom.all

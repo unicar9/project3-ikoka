@@ -11,7 +11,9 @@ Rails.application.routes.draw do
 
   mount ActionCable.server => '/cable'
 
+  get '/users/search' => 'users#search'
 
+  post '/chatrooms/:id' => 'chatrooms#add_user'
 
   resources :messages
   resources :users

@@ -1,9 +1,10 @@
-
+<!-- hiden side bar name -->
 <div class="ui secondary big launch right attached button">
   <i class="icon list layout"></i>
   <span class="text" style="display:none;">Users</span>
 </div>
 
+<!-- side bar pusher -->
 <div class="pusher">
   <h1><%= @chatroom.topic %></h1>
 
@@ -17,6 +18,8 @@
 
 
 
+
+<!-- side bar -->
 <div class="ui thin inverted sidebar vertical menu">
 
   <div class="ui header">
@@ -34,5 +37,32 @@
     <% end %>
   </div>
 
+
+  <div id="invite-friends" class="ui teal button">
+    invite friends
+  </div>
+</div>
+
+
+<!-- invite friends modal -->
+<div class="ui modal search-invite">
+  <div class="header">Invite Friends</div>
+  <i class="close icon"></i>
+  <div class="content" id="search-content">
+    <div class="ui search">
+      <div class="ui action input">
+        <input id="user-search-input" class="prompt" type="text" placeholder="Search by email...">
+        <button id="user-search-button" class="ui icon button">
+          <i class="search icon"></i>
+        </button>
+      </div>
+
+    </div>
+
+    <div id="user-search-results"class="">
+        Results:
+    </div>
+
+  </div>
 
 </div>
