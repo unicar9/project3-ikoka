@@ -1,7 +1,7 @@
 <div class="ui container">
   <h1>My Account</h1>
 
-  <%= link_to cl_image_tag(@user.avatar, :width=>150, :height=>150, :crop=>"crop", :gravity=>"face", :secure=>true)%>
+  <%= link_to(@user.avatar, :width=>150, :height=>150, :crop=>"crop", :gravity=>"face", :secure=>true)%>
 
   <h2> <%= @user.name %> </h2>
   <h4> <%= @user.email %> </h4>
