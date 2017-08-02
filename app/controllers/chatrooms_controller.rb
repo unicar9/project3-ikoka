@@ -3,7 +3,7 @@ class ChatroomsController < ApplicationController
   before_action :get_chatroom, only: [:show, :add_user]
 
   def add_user
-    user = User.find_by name:params[:name]
+    user = User.find_by email:params[:email]
     message = Message.new
     message.content = "#{user.name} has joined this chatroom!!!!!"
     message.user = user

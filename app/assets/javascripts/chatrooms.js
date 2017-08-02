@@ -36,7 +36,7 @@ $(document).ready(function() {
         };
         $.each(results, function(index, item) {
           response.results.push({
-            title: item.name
+            title: item.email
           });
         });
         return response
@@ -61,9 +61,11 @@ $(document).ready(function() {
     .done(function(data){
 
       for (var i = 0; i < data.length; i++) {
-        var $userdiv = $('<div>').appendTo('#user-search-results');
-        $('<span>').text(data[i].name).appendTo($userdiv);
-        $('<a>').text('add').addClass('add-user').appendTo($userdiv);
+
+        var $userdiv = $('<tr>').appendTo('#user-search-results');
+        $('<td>').text(data[i].name).appendTo($userdiv);
+        $('<td>').text(data[i].email).appendTo($userdiv);
+        $('<td>').text('add').addClass('add-user').appendTo($userdiv);
       }
 
     });
@@ -74,13 +76,13 @@ $(document).ready(function() {
 
   $(document).on('click', '.add-user', function(){
 
-    var username = $(this).prev().text();
-    console.log(username);
+    var userEmail = $(this).prev().text();
+    console.log(userEmail);
     $.ajax({
       method: "POST",
       url: ' #{ /chatrooms/:id } ' ,
       data: {
-        name: username
+        email: userEmail
       }
     })
     .done(function(res){

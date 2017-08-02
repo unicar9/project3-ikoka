@@ -148,6 +148,8 @@ $(document).ready(function() {
 
       }; // draw func
 
+  
+
     } // s func
 
     // create a new p5 instance
