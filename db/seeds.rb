@@ -35,12 +35,9 @@ m6 = Message.create content:"To be or not to be"
 u1.messages << m1 << m3 << m4 << m6
 u2.messages << m2
 c1.messages << m1 << m2
-
-#
-# u3.messages << m5
-#
-# c1.messages << m1 << m2 << m4
-# c2.messages << m5 << m6
-# c3.messages << m3
+u3.messages << m5
+c1.messages << m1 << m2 << m4
+c2.messages << m5 << m6
+c3.messages << m3
 
 puts "...planted.... ikoka koka koka......"
