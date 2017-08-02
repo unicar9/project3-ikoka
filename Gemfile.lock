@@ -71,7 +71,6 @@ GEM
     erubis (2.7.0)
     execjs (2.7.0)
     ffi (1.9.18)
-    filterrific (2.1.2)
     globalid (0.4.0)
       activesupport (>= 4.2.0)
     http-cookie (1.0.3)
@@ -132,6 +131,11 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.0.3)
       loofah (~> 2.0)
+    rails_12factor (0.0.3)
+      rails_serve_static_assets
+      rails_stdout_logging
+    rails_serve_static_assets (0.0.5)
+    rails_stdout_logging (0.0.5)
     railties (5.0.4)
       actionpack (= 5.0.4)
       activesupport (= 5.0.4)
@@ -194,7 +198,6 @@ DEPENDENCIES
   byebug
   cloudinary
   coffee-rails (~> 4.2)
-  filterrific
   jbuilder (~> 2.5)
   jquery-rails
   listen (~> 3.0.5)
@@ -203,6 +206,7 @@ DEPENDENCIES
   pry-rails
   puma (~> 3.0)
   rails (~> 5.0.4)
+  rails_12factor
   redis (~> 3.0)
   sass-rails (~> 5.0)
   semantic-ui-sass!

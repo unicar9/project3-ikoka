@@ -31,6 +31,7 @@ gem 'redis', '~> 3.0'
 gem 'bcrypt', '~> 3.1.7'
 gem 'cloudinary'
 gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass'
+gem 'rails_12factor'
 
 
 # Use Capistrano for deployment
