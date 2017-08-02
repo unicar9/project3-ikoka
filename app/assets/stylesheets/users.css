@@ -8,4 +8,15 @@
 }
 
 
-.
+.new-chatroom-action-card {
+  position: relative;
+  margin: auto;
+  display: block;
+  text-align: center;
+  cursor: pointer;
+
+}
+
+.new-chatroom-action-card h3{
+  margin: auto;
+}
