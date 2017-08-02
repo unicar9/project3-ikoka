@@ -41,7 +41,8 @@ $(document).ready(function() {
   //------------------------------------------
 
   //------ create new chatroom modal ----------
-  $('#new-chatroom').on('click', function(){
+  $('.new-chatroom-action-card').on('click', function(){
+    console.log('clicked');
     $('.ui.modal.new-chatroom').modal('show');
   });
 
@@ -152,6 +153,11 @@ $(document).ready(function() {
 
     // create a new p5 instance
     var canvas = new p5(s, 'messages');
+
+    $(window).on('resize', function(){
+      var canvasWidth = $('#messages').width();
+      canvas.resizeCanvas(canvasWidth, 600);
+    });
 
   } // if
   /* ------------------------------
