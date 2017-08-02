@@ -1,13 +1,54 @@
+
+<div class=""></div>
+
 <div class="ui container">
-  <h3><%= @user.name %></h3>
-  <p><%= @user.email %></p>
+  <div class="ui horizontal segments">
+    <div class="ui segment">
+      <div class="ui items">
+        <div class="item">
+          <%= cl_image_tag(@user.avatar, :width=>100, :height=>100, :crop=>"crop", :gravity=>"face", :secure=>true, class: "ui image rounded") %>
+          <div class="content">
+            <p class="header"><%= @user.name %></p>
+            <div class="meta">
+              <p class="price"><%= @user.email %></p>
+              <p class="price">Joined iKoka since <%= @user.created_at.strftime("%d %b %Y") %></p>
+              <p class="price">Already sent <%= @user.messages.count %> messages!</p>
+            </div>
+          </div>
+        </div>
+      </div>
 
-  <%= link_to(@user.avatar, :width=>150, :height=>150, :crop=>"crop", :gravity=>"face", :secure=>true)%>
+    </div>
+
+    <div class="ui segment">
+      <div class="ui small horizontal statistics">
+        <div class="statistic">
+          <div class="value">
+            <%= @user.messages.count %>
+          </div>
+          <div class="label">
+            Messages sent
+          </div>
+        </div>
+        <div class="statistic">
+          <div class="value">
+            <%= @user.chatrooms.count %>
+          </div>
+          <div class="label">
+            Chatrooms joined
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
 
 
-  <h4>Chatrooms:</h4>
+  <div class="ui header">
+    <%= @user.name %>'s Chatrooms:</h4>
+  </div>
 
-  <div class="ui special cards">
+  <div class="ui three special link cards">
     <div class="card">
       <div class="new-chatroom-action-card">
         <%= link_to new_chatroom_path  do %>
@@ -32,14 +73,13 @@
             </div>
           </div>
         </div>
-
         <%= image_tag c.cover  %>
       </div>
       <div class="extra content">
-        <a>
+        <div>
           <i class="users icon"></i>
-          <%= c.users.count %> users are having fun
-        </a>
+          <%= c.users.count %> users are having fun!
+        </div>
       </div>
     </div>
     <% end %>
