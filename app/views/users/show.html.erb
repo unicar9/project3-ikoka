@@ -15,8 +15,12 @@
 
   <div class="ui special cards">
     <div class="card">
-      <div class="center">
-        <i class="big add icon"></i>
+      <div class="image">
+        <img src="http://fillmurray.com/400/200" alt="">
+      </div>
+      <div class="ui bottom attached button">
+        <i class="add icon"></i>
+        New Chatroom
       </div>
     </div>
     <% @user.chatrooms.each do |c| %>
@@ -25,17 +29,16 @@
         <div class="ui dimmer">
           <div class="content">
             <div class="center">
-              <%= link_to "Join", chatroom_path(c), class:"ui inverted button" %>
+              <%= link_to "Enter", chatroom_path(c), class:"ui inverted button" %>
             </div>
           </div>
         </div>
-        <%= image_tag c.cover  %>
-      </div>
-      <div class="content">
-        <%= link_to c.topic, chatroom_path(c), class:"header" %>
-        <div class="meta">
-          <span class="date">Created on <%= c.created_at.strftime("%d %b %Y") %>  </span>
+        <div class="overlay-card-info">
+          <h2> <%= c.topic %>  </h2>
+          <p> <%= c.description %></p>
         </div>
+
+        <%= image_tag c.cover  %>
       </div>
       <div class="extra content">
         <a>

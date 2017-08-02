@@ -35,10 +35,9 @@ $(document).ready(function() {
   // ---- initialize semantic-ui actions -----
   $('.ui.dropdown').dropdown();
 
-  $('.dimmable').hover(
-    function(){ $(this).find('.ui.dimmer').dimmer('show') },
-    function(){ $(this).find('.ui.dimmer').dimmer('hide') }
-  );
+  $('.special.cards .image').dimmer({
+    on: 'hover'
+  });
   //------------------------------------------
 
   //------ create new chatroom modal ----------
