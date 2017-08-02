@@ -3,16 +3,18 @@ class ChatroomsController < ApplicationController
   before_action :get_chatroom, only: [:show, :add_user]
 
   def add_user
-    user = User.find_by name:params[:name]
+    @user = User.find_by name:params[:name]
     message = Message.new
     message.content = "#{user.name} has joined this chatroom!!!!!"
-    message.user = user
+    message.user = @user
     message.chatroom = @chatroom
     if message.save
       ActionCable.server.broadcast 'messages', message: message.content, user: message.user.name
 
       head :ok
     end
+
+    # render :json => @user
   end
 
   def index
@@ -24,10 +26,12 @@ class ChatroomsController < ApplicationController
 
     @message = Message.new
     @messages = @chatroom.messages
+    @users = @chatroom.users
 
     respond_to do |format|
       format.html {}
-      format.json {  render :json => @messages}
+      format.json { render :json => { :messages => @messages,
+                                      :users => @users }}
     end
   end
 
@@ -37,7 +41,7 @@ class ChatroomsController < ApplicationController
 
   def create
     @chatroom = Chatroom.new chatroom_params
-    @chatroom.cover = '/assets/bg3.jpg'
+    @chatroom.cover = "/assets/cover#{[1,2,3].sample}.png"
     @chatroom.save
 
     @message = Message.create content:"#{@current_user.name} created this world", chatroom_id:@chatroom.id, user_id:@current_user.id

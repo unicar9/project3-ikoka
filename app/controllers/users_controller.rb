@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   before_action :get_user, only: [:show, :edit, :update]
 
   def search
-    @users = User.where('email like ?', "%#{params[:term]}%")
+    @users = User.where('name like ?', "%#{params[:term]}%")
     render json: @users if @users.present?
 
   end
