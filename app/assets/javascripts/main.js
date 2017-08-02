@@ -40,17 +40,6 @@ $(document).ready(function() {
   });
   //------------------------------------------
 
-  //------ create new chatroom modal ----------
-  $('.new-chatroom-action-card').on('click', function(){
-    console.log('clicked');
-    $('.ui.modal.new-chatroom').modal('show');
-  });
-
-  $('#save-chatroom').on('click', function(){
-    $('.ui.modal.new-chatroom').modal('hide');
-  });
-  //------------------------------------------
-
   /* ------------------------------
   | following code only excute on |
   |      chatromms#show page      |
@@ -79,12 +68,13 @@ $(document).ready(function() {
           shape: Math.floor(randy(0, 3)),
           size: size,
           hue: hue,
-          speedRotation: speedRotation
+          speedRotation: speedRotation,
+          offsetRotation: randy(0, 360)
         };
         msgs.push(m);
       }
     });
-    // ======= ajax call to fetch message history =====
+    // ======= ajax call to fetch message history ==============
 
 
 
@@ -108,13 +98,17 @@ $(document).ready(function() {
         // set color mode HSB
         sketch.colorMode(sketch.HSB, 255);
 
-        // set canvas background
+        // set canvas background (randomlly choose 1 from 3)
         bg = sketch.loadImage("/assets/bg" + Math.floor(randy(1,3)) + ".jpg");
 
+        // set textsize
+        sketch.textSize(20);
 
       };
 
       sketch.draw = function() {
+
+        sketch.angleMode(sketch.DEGREES);
 
         sketch.background(bg);
 
@@ -124,20 +118,36 @@ $(document).ready(function() {
           m.x += m.velocityX;
           m.y += m.velocityY;
           sketch.stroke(m.hue, 200, 255);
-          sketch.text(m.content, m.x, m.y );
+          sketch.fill(m.hue, 200, 255);
+          sketch.text(m.content, m.x, m.y);
 
+          // draw different shapes along with text messages=============================
+          // shapes are only strokes without fill=============================
+          sketch.noFill();
 
-          if (m.shape === 0) {
-            sketch.rect(m.x, m.y, m.size, m.size ).noFill();
-          }
-          if (m.shape === 1) {
-            var points = getTri(m.x, m.y, m.size);   // using the msg's x,y coordinate(m.x, m.y) and size value(m.size) to genereate a triangle
-            sketch.triangle(points.x1, points.y1, points.x2, points.y2, points.x3, points.y3).noFill();
-          }
-          if (m.shape === 2) {
-            sketch.ellipse(m.x, m.y, m.size, m.size).noFill();
-          }
+          // rotation ===============================
+          sketch.push();
+            sketch.translate(m.x, m.y);
 
+            sketch.push();
+              sketch.translate(0, 0);
+              sketch.rotate( m.offsetRotation + sketch.frameCount * m.speedRotation);
+
+              if (m.shape === 0) {
+                sketch.rect(0, 0, m.size, m.size ).noFill();
+              }
+              if (m.shape === 1) {
+                var points = getTri(0, 0, m.size); 
+                sketch.triangle(points.x1, points.y1, points.x2, points.y2, points.x3, points.y3).noFill();
+              }
+              if (m.shape === 2) {
+                sketch.ellipse(0, 0, m.size, m.size).noFill();
+              }
+
+            sketch.pop();
+          sketch.pop();
+
+          // bounce effects====================================
           if(m.x >= canvasWidth || m.x <= 0) {
             m.velocityX *= -1
           }
