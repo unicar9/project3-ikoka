@@ -72,31 +72,6 @@
 
 
 
-
-    <!-- create chatroom modal -->
-    <div class="ui modal new-chatroom">
-      <div class="header">Creat a Chatroom</div>
-      <i class="close icon"></i>
-      <div class="content">
-
-        <%= form_for :chatroom, remote: true, authenticity_token: true, :html => { :class => "ui form" } do |f|%>
-          <div class="required field">
-            <%= f.label :topic %>
-            <%= f.text_field :topic %>
-          </div>
-          <div class="field">
-            <%= f.label :description %>
-            <%= f.text_field :description %>
-          </div>
-          <div class="field">
-            <button id="save-chatroom" class="ui purple button">Save and Go</button>
-          </div>
-        <% end %>
-
-      </div>
-    </div>
-    <!-- create chatroom modal -->
-
     <div class="" style="height:15px"></div>
 
     <%= yield %>

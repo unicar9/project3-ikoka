@@ -16,6 +16,7 @@ class ChatroomsController < ApplicationController
   end
 
   def index
+    @chatroom = Chatroom.new
     @chatrooms = Chatroom.all
   end
 
@@ -35,10 +36,13 @@ class ChatroomsController < ApplicationController
   end
 
   def create
-    @chatroom = Chatroom.create chatroom_params
-    @message = Message.create content:"#{@current_user.name} created this world", chatroom_id:@chatroom.id, user_id:@current_user.id
-    @chatroom.cover = '/assest/bg3.jpg'
+    @chatroom = Chatroom.new chatroom_params
+    @chatroom.cover = '/assets/bg3.jpg'
     @chatroom.save
+
+    @message = Message.create content:"#{@current_user.name} created this world", chatroom_id:@chatroom.id, user_id:@current_user.id
+
+
     redirect_to chatroom_path(@chatroom)
 
   end

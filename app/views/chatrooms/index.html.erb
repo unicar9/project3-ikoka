@@ -4,49 +4,62 @@
 
 <div class="ui divider"></div>
 
-  <div class="ui container">
-    <div class="ui four special link cards">
+<div class="ui container">
+  <div class="ui four special link cards">
 
-      <div class="card">
-        <div class="new-chatroom-action-card">
-          <%#= link_to new_chatroom_path  do %>
-          <h3><i class="add icon"></i>New Chatroom</h3>
-          <%# end %>
-        </div>
+    <div class="card">
+      <div class="new-chatroom-action-card">
+        <%#= link_to new_chatroom_path  do %>
+        <h3><i class="add icon"></i>New Chatroom</h3>
+        <%# end %>
       </div>
+    </div>
 
-        <!-- iterate through chatrooms and list them as cards -->
-        <% @chatrooms.each do |c| %>
+      <!-- iterate through chatrooms and list them as cards -->
+      <% @chatrooms.each do |c| %>
 
-          <div class="card">
-            <div class="overlay-card-info">
-              <h2> <%= c.topic %> </h2>
-            </div>
+        <div class="card">
+          <div class="overlay-card-info">
+            <h2> <%= c.topic %> </h2>
+          </div>
 
-            <div class="blurring dimmable image">
-              <div class="ui inverted dimmer">
-                <div class="content">
-                  <div class="center">
-                    <% if (@current_user.present?) and (c.users.include? @current_user)  %>
-                    <%= link_to "Enter", chatroom_path(c), class:"ui orange button" %>
-                    <% else %>
-                    <%= link_to "Join", chatroom_path(c), class:"ui green button" %>
-                    <% end %>
-                  </div>
+          <div class="blurring dimmable image">
+            <div class="ui inverted dimmer">
+              <div class="content">
+                <div class="center">
+                  <% if (@current_user.present?) and (c.users.include? @current_user)  %>
+                  <%= link_to "Enter", chatroom_path(c), class:"ui orange button" %>
+                  <% else %>
+                  <%= link_to "Join", chatroom_path(c), class:"ui green button" %>
+                  <% end %>
                 </div>
               </div>
-              <%= image_tag c.cover, size:"300x200"  %>
             </div>
-
-            <div class="extra content">
-              <a>
-                <i class="users icon"></i>
-                <%= c.users.count %> users are having fun
-              </a>
-            </div>
+            <%= image_tag c.cover, size:"300x200"  %>
           </div>
-          <!-- ui special card================================= -->
-        <% end %>
 
-    </div>
+          <div class="extra content">
+            <a>
+              <i class="users icon"></i>
+              <%= c.users.count %> users are having fun
+            </a>
+          </div>
+        </div>
+        <!-- ui special card================================= -->
+      <% end %>
+
   </div>
+</div>
+
+
+<!-- create chatroom modal -->
+<div class="ui modal new-chatroom">
+  <div class="header">Creat a Chatroom</div>
+  <i class="close icon"></i>
+  <div class="content">
+
+    <%= render partial: 'chatrooms/chatrooms_form', locals: {chatroom: @chatroom} %>
+
+  </div>
+</div>
+<!-- create chatroom modal -->

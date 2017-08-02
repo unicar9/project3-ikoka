@@ -85,3 +85,15 @@
   </div>
 
 </div>
+
+<!-- create chatroom modal -->
+<div class="ui modal new-chatroom">
+  <div class="header">Creat a Chatroom</div>
+  <i class="close icon"></i>
+  <div class="content">
+
+    <%= render partial: 'chatrooms/chatrooms_form', locals: {chatroom: @chatroom} %>
+
+  </div>
+</div>
+<!-- create chatroom modal -->

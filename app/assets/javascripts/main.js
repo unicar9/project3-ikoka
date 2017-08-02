@@ -109,7 +109,7 @@ $(document).ready(function() {
         sketch.colorMode(sketch.HSB, 255);
 
         // set canvas background
-        bg = sketch.loadImage("/assets/gradient-bg-3.jpg");
+        bg = sketch.loadImage("/assets/bg3.jpg");
 
       };
 
