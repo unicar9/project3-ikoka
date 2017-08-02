@@ -1,13 +1,15 @@
-<!-- hiden side bar name -->
-<div class="ui secondary big launch right attached button">
-  <i class="icon list layout"></i>
-  <span class="text" style="display:none;">Users</span>
-</div>
+
 
 <!-- side bar pusher -->
-<div class="pusher">
-  <h1><%= @chatroom.topic %></h1>
+<div class="pushcontext">
 
+  <!-- hiden side bar name -->
+  <div class="ui secondary big launch right attached button">
+    <i class="icon list layout"></i>
+    <span class="text" style="display:none;">Users</span>
+  </div>
+
+  <!-- this is where the whole canvas goes -->
   <div id="messages" class="ui container segment"></div>
 
 
@@ -16,39 +18,42 @@
   </div>
 
   <div class="" style="height:15px"></div>
-  
-</div>
 
+  <!-- side bar -->
+  <div class="ui thin inverted sidebar vertical menu">
 
+    <div class="ui header">
+      <%= @chatroom.topic %>
+    </div>
 
-
-<!-- side bar -->
-<div class="ui thin inverted sidebar vertical menu">
-
-  <div class="ui header">
-    <%= @chatroom.topic %>
-  </div>
-
-  <div class="ui middle aligned animated list">
-    <% @chatroom.users.each do |u| %>
-      <div class="item">
-        <%= cl_image_tag(u.avatar, :width=>300, :height=>300, :crop=>"crop", :gravity=>"face", :secure=>true, class: "ui avatar image") %>
-        <div class="content">
-          <%= link_to u.name, user_path(u), class: "header" %>
+    <div class="ui middle aligned animated list">
+      <% @chatroom.users.each do |u| %>
+        <div class="item">
+          <%= cl_image_tag(u.avatar, :width=>300, :height=>300, :crop=>"crop", :gravity=>"face", :secure=>true, class: "ui avatar image") %>
+          <div class="content">
+            <%= link_to u.name, user_path(u), class: "header" %>
+          </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
+
+
+    <div id="invite-friends" class="ui teal button">
+      invite friends
+    </div>
   </div>
 
 
-  <div id="invite-friends" class="ui teal button">
-    invite friends
-  </div>
 </div>
+
+
+
+
+
 
 
 <!-- invite friends modal -->
-<div class="ui modal search-invite">
+<!-- <div class="ui modal search-invite">
   <div class="header">Invite Friends</div>
   <i class="close icon"></i>
   <div class="content" id="search-content">
@@ -68,4 +73,4 @@
 
   </div>
 
-</div>
+</div> -->
