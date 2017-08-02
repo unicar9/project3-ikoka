@@ -1,41 +1,36 @@
 <div class="ui container">
-  <h1>My Account</h1>
+  <h3><%= @user.name %></h3>
+  <p><%= @user.email %></p>
 
   <%= link_to(@user.avatar, :width=>150, :height=>150, :crop=>"crop", :gravity=>"face", :secure=>true)%>
 
-  <h2> <%= @user.name %> </h2>
-  <h4> <%= @user.email %> </h4>
-
-  <% if @current_user == @user %>
-    <%= link_to 'Edit Profile', edit_user_path(@user), class: 'ui button' %>
-    <%= link_to 'Create Chatroom', '#', class:"ui teal button", id:"new-chatroom" %>
-  <% end %>
 
   <h4>Chatrooms:</h4>
 
   <div class="ui special cards">
     <div class="card">
-      <div class="image">
-        <img src="http://fillmurray.com/400/200" alt="">
-      </div>
-      <div class="ui bottom attached button">
-        <i class="add icon"></i>
-        New Chatroom
+      <div class="new-chatroom-action-card">
+        <%= link_to new_chatroom_path  do %>
+          <h3><i class="add icon"></i>New Chatroom</h3>
+        <% end %>
       </div>
     </div>
     <% @user.chatrooms.each do |c| %>
     <div class="card">
+      <div class="overlay-card-info">
+        <h2> <%= c.topic %>  </h2>
+      </div>
       <div class="blurring dimmable image">
-        <div class="ui dimmer">
+        <div class="ui inverted dimmer">
           <div class="content">
             <div class="center">
-              <%= link_to "Enter", chatroom_path(c), class:"ui inverted button" %>
+              <% if (@current_user.present?) and (c.users.include? @current_user)  %>
+              <%= link_to "Enter", chatroom_path(c), class:"ui orange button" %>
+              <% else %>
+              <%= link_to "Join", chatroom_path(c), class:"ui green button" %>
+              <% end %>
             </div>
           </div>
-        </div>
-        <div class="overlay-card-info">
-          <h2> <%= c.topic %>  </h2>
-          <p> <%= c.description %></p>
         </div>
 
         <%= image_tag c.cover  %>

@@ -1,7 +1,40 @@
-<ul>
-  <% @chatrooms.each do |c| %>
-    <li>
-      <%= link_to c.topic, chatroom_path(c) %>
-    </li>
-  <% end %>
-</ul>
+<div class="ui container">
+
+  <div class="ui special cards">
+    <div class="card">
+      <div class="new-chatroom-action-card">
+        <%= link_to new_chatroom_path  do %>
+        <h3><i class="add icon"></i>New Chatroom</h3>
+        <% end %>
+      </div>
+    </div>
+    <% @chatrooms.each do |c| %>
+    <div class="card">
+      <div class="overlay-card-info">
+        <h2> <%= c.topic %>  </h2>
+      </div>
+      <div class="blurring dimmable image">
+        <div class="ui inverted dimmer">
+          <div class="content">
+            <div class="center">
+              <% if (@current_user.present?) and (c.users.include? @current_user)  %>
+              <%= link_to "Enter", chatroom_path(c), class:"ui orange button" %>
+              <% else %>
+              <%= link_to "Join", chatroom_path(c), class:"ui green button" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+
+        <%= image_tag c.cover, size:"300x200"  %>
+      </div>
+      <div class="extra content">
+        <a>
+          <i class="users icon"></i>
+          <%= c.users.count %> users are having fun
+        </a>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>

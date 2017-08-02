@@ -30,6 +30,10 @@ class ChatroomsController < ApplicationController
     end
   end
 
+  def new
+
+  end
+
   def create
     @chatroom = Chatroom.create chatroom_params
     @message = Message.create content:"#{@current_user.name} created this world", chatroom_id:@chatroom.id, user_id:@current_user.id
