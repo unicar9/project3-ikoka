@@ -109,7 +109,8 @@ $(document).ready(function() {
         sketch.colorMode(sketch.HSB, 255);
 
         // set canvas background
-        bg = sketch.loadImage("/assets/bg3.jpg");
+        bg = sketch.loadImage("/assets/bg" + Math.floor(randy(1,3)) + ".jpg");
+
 
       };
 

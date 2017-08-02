@@ -45,7 +45,7 @@ $(document).ready(function() {
   // semantic ui autocomplete search=========================
 
 
-  // list search results with add buttons =========================
+  // list search results with add buttons ======================
 
   $('#user-search-button').on('click', function(){
 
@@ -59,6 +59,7 @@ $(document).ready(function() {
     })
     .done(function(data){
 
+      $('#user-search-results').empty();
       for (var i = 0; i < data.length; i++) {
         var $userdiv = $('<div>').appendTo('#user-search-results');
         $('<img>').attr('src', data[i].avatar).addClass('ui avatar image').appendTo($userdiv);
