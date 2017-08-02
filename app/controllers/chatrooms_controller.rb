@@ -5,7 +5,7 @@ class ChatroomsController < ApplicationController
   def add_user
     @user = User.find_by name:params[:name]
     message = Message.new
-    message.content = "#{user.name} has joined this chatroom!!!!!"
+    message.content = "#{@user.name} has joined this chatroom!!!!!"
     message.user = @user
     message.chatroom = @chatroom
     if message.save
