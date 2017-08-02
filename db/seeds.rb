@@ -16,8 +16,11 @@ u3 = User.create name:"lingxiao", email:"lingxiao@gmail.com", password:"panda", 
 u4 = User.create name:"zhuzhu", email:"zhuzhu@gmail.com", password:"panda", avatar:"https://robohash.org/zhuzhu?size=100x100&set=set2&bgset=bg1"
 
 Chatroom.destroy_all
-c1 = Chatroom.create topic:"Welcome to iKoka", description:"iKoka is awesome!", cover:"http://fillmurray.com/400/200"
-c2 = Chatroom.create topic:"The Last of Us rocks!", description:"Waiting for the sequel", cover:"http://fillmurray.com/400/200"
+c1 = Chatroom.create topic:"Welcome to iKoka", description:"iKoka is awesome!", cover:"http://lorempixel.com/400/200/abstract/1"
+c2 = Chatroom.create topic:"The Last of Us rocks!", description:"Waiting for the sequel", cover:"http://lorempixel.com/400/200/abstract/2"
+c3 = Chatroom.create topic:"Wdi22", description:"Waiting for the sequel", cover:"http://lorempixel.com/400/200/abstract/3"
+c4 = Chatroom.create topic:"Show me the Wave", description:"Waiting for the sequel", cover:"http://lorempixel.com/400/200/abstract/4"
+c5 = Chatroom.create topic:"我是真的大妈", description:"Waiting for the sequel", cover:"http://lorempixel.com/400/200/abstract/5"
 
 Message.destroy_all
 m1 = Message.create content:"I love iKoka"
