@@ -41,7 +41,7 @@ class ChatroomsController < ApplicationController
     @chatroom.save
 
     @message = Message.create content:"#{@current_user.name} created this world", chatroom_id:@chatroom.id, user_id:@current_user.id
-    
+
     redirect_to chatroom_path(@chatroom)
 
   end
