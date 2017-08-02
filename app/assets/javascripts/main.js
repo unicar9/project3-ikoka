@@ -154,6 +154,8 @@ $(document).ready(function() {
     // create a new p5 instance
     var canvas = new p5(s, 'messages');
 
+    // after creating p5 instance
+    // canvas resize
     $(window).on('resize', function(){
       var canvasWidth = $('#messages').width();
       canvas.resizeCanvas(canvasWidth, 600);

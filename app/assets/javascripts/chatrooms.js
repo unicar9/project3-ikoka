@@ -15,7 +15,9 @@ $(document).ready(function() {
 		$(this).find('.text').hide();
 		$(this).stop().animate({width: '70px'}, 300);
 	});
-  $(".ui.sidebar").sidebar()
+  $(".ui.sidebar").sidebar({
+                    context: $('.pushcontext')
+                  })
                   .sidebar('attach events','.ui.launch.button');
 
 

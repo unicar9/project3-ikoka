@@ -24,25 +24,9 @@
   left: 10px;
   color: white;
   z-index: 1;
-  text-shadow: 2px 2px #000000;
+  text-shadow: 2px 2px #333;
 }
 
-.ui.dropdown .item{
-  display: block;
+.ui.dropdown .menu {
+  display: block!important;
 }
-
-.new-chatroom-action-card {
-  position: relative;
-  margin: auto;
-  display: block;
-  text-align: center;
-  cursor: pointer;
-  height: 100%;
-  align-items: center;
-  justify-content: center;
-}
-
-// .new-chatroom-action-card h3 {
-//   display: table-cell;
-//   vertical-align: middle;
-// }
