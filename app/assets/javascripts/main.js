@@ -41,7 +41,8 @@ $(document).ready(function() {
   //------------------------------------------
 
   //------ create new chatroom modal ----------
-  $('#new-chatroom').on('click', function(){
+  $('.new-chatroom-action-card').on('click', function(){
+    console.log('clicked');
     $('.ui.modal.new-chatroom').modal('show');
   });
 

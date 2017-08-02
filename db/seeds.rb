@@ -10,10 +10,12 @@
 puts "ikoka koka koka planting...."
 
 User.destroy_all
-u1 = User.create name:"unicar", email:"unicar9@gmail.com", password:"panda", avatar:"https://fillmurray.com/100/100", is_admin:true
-u2 = User.create name:"panda", email:"panda@gmail.com", password:"panda", avatar:"https://fillmurray.com/100/100", is_admin:true
+u1 = User.create name:"unicar", email:"unicar9@gmail.com", password:"panda", avatar:"https://robohash.org/unicar?size=100x100&set=set2&bgset=bg1", is_admin:true
+u2 = User.create name:"panda", email:"panda@gmail.com", password:"panda", avatar:"https://robohash.org/panda?size=100x100&set=set2&bgset=bg1", is_admin:true
 u3 = User.create name:"lingxiao", email:"lingxiao@gmail.com", password:"panda", avatar:"https://robohash.org/lingxiao?size=100x100&set=set2&bgset=bg1"
 u4 = User.create name:"zhuzhu", email:"zhuzhu@gmail.com", password:"panda", avatar:"https://robohash.org/zhuzhu?size=100x100&set=set2&bgset=bg1"
+u5 = User.create name:"dama", email:"wanglingxiao@gmail.com", password:"panda", avatar:"https://robohash.org/dama?size=100x100&set=set2&bgset=bg1"
+u6 = User.create name:"gungun", email:"cutepanda@gmail.com", password:"panda", avatar:"https://robohash.org/zhuzhu?size=100x100&set=set2&bgset=bg1"
 
 Chatroom.destroy_all
 c1 = Chatroom.create topic:"Welcome to iKoka", description:"iKoka is awesome!", cover:"http://lorempixel.com/400/200/abstract/1"
