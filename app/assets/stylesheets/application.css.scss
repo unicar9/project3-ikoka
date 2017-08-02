@@ -16,13 +16,24 @@
 
 @import "semantic-ui";
 
-.overlay-card-info{
+.overlay-card-info {
   position: absolute;
   margin: 0;
   padding: 0;
   top: 10px;
   left: 10px;
   color: white;
-  text-shadow: 2px 2px #000000;
-  z-index: 9999999;
+  z-index: 1;
+  text-shadow: 2px 2px #333;
+}
+
+
+
+.new-chatroom-action-card {
+  position: relative;
+  height: 100%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

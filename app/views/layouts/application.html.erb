@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Ikoka</title>
+    <title>ikoka</title>
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
     <%= cloudinary_js_config %>
-    <script src="//widget.cloudinary.com/global/all.js" type="text/javascript"></script>
 
   </head>
 
@@ -17,94 +16,66 @@
 
       <div class="ui container">
         <div class="ui secondary menu">
-          <div class="item">
-            <%= link_to "Explore Chatrooms", chatrooms_path, :method => :get, class: 'ui inverted purple button item' %>
-          </div>
+          <%= link_to "Explore Chatrooms", chatrooms_path, :method => :get, class: 'ui inverted purple button' %>
 
           <div class="right menu">
             <!-- right pointing dropdown -->
-            <div class="item">
-              <% unless @current_user.present? %>
-                <div class="ui top right pointing dropdown icon inverted purple button">
+
+                <div class="ui top right dropdown icon inverted purple button">
                   <i class="sidebar icon"></i>
                   <div class="menu">
+
+                  <% unless @current_user.present? %>
                     <div class="item">
                       <%= link_to login_path do %>
                       <i class="user icon"></i>
                       Login
                       <% end %>
                     </div>
+
                     <div class="item">
                       <%= link_to new_user_path do %>
                       <i class="edit icon"></i>
                       Signup
                       <% end %>
                     </div>
-                  </div>
-                </div>
-              <% else %>
-                <div class="ui top right pointing dropdown icon">
-                  <%= cl_image_tag(@current_user.avatar, :width=>300, :height=>300, :crop=>"crop", :gravity=>"face", :secure=>true, class: "ui avatar image")%>
-                  <div class="menu">
+
+                  <% else %>
+
                     <div class="item">
                       <%= link_to user_path(@current_user) do %>
-                      <i class="user icon"></i>
+                      <%= cl_image_tag(@current_user.avatar, :width=>300, :height=>300, :crop=>"crop", :gravity=>"face", :secure=>true, class: "ui avatar image")%>
                       <%= @current_user.name %>
                       <% end %>
                     </div>
+
                     <div class="item">
                       <%= link_to edit_user_path(@current_user) do %>
                       <i class="edit icon"></i>
                       Edit Profile
                       <% end %>
                     </div>
+
                     <div class="item">
                       <%= link_to login_path, :method => :delete do %>
                       <i class="power icon"></i>
                       Logout
                       <% end %>
                     </div>
+
+                  <% end %>
                   </div>
                 </div>
-              <% end %>
-            </div>
           </div>
         </div>
       </div>
 
 
 
+    <div class="" style="height:15px"></div>
 
-    <!-- create chatroom modal -->
-    <div class="ui modal new-chatroom">
-      <div class="header">Creat a Chatroom</div>
-      <i class="close icon"></i>
-      <div class="content">
+    <%= yield %>
 
-        <%= form_tag('/chatrooms', method: :post, remote: true, authenticity_token: true, class:"ui form") do %>
-          <div class="required field">
-            <%= label_tag :topic %>
-            <%= text_field_tag :topic %>
-          </div>
-
-          <div class="field">
-            <%= label_tag :description %>
-            <%= text_field_tag :description %>
-          </div>
-
-          <div class="field">
-            <button id="save-chatroom" class="ui purple button">Save and Go</button>
-          </div>
-        <% end %>
-
-      </div>
-    </div>
-    <!-- create chatroom modal -->
-
-
-    <div>
-      <%= yield %>
-    </div>
 
   </body>
 </html>

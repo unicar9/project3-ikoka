@@ -3,9 +3,6 @@
 // # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $(document).ready(function() {
-  // $('.ui.sidebar')
-  // .sidebar('overlay')
-  // .sidebar('toggle');
 
   // launch button animation and toggle sidebar=========================
   $(".launch.button").mouseenter(function(){
@@ -15,7 +12,9 @@ $(document).ready(function() {
 		$(this).find('.text').hide();
 		$(this).stop().animate({width: '70px'}, 300);
 	});
-  $(".ui.sidebar").sidebar()
+  $(".ui.sidebar").sidebar({
+                    context: $('.pushcontext')
+                  })
                   .sidebar('attach events','.ui.launch.button');
 
 
@@ -46,7 +45,7 @@ $(document).ready(function() {
   // semantic ui autocomplete search=========================
 
 
-  // list search results with add buttons =========================
+  // list search results with add buttons ======================
 
   $('#user-search-button').on('click', function(){
 
@@ -58,22 +57,30 @@ $(document).ready(function() {
       url: "/users/search",
       data: { term: query  }
     })
-    .done(function(data){
+    .done(function(res){
 
-      for (var i = 0; i < data.length; i++) {
+      if (res) {
+        $('#user-search-results').empty();
+        for (var i = 0; i < res.length; i++) {
+          var $userdiv = $('<div>').appendTo('#user-search-results');
+          $('<img>').attr('src', res[i].avatar).addClass('ui avatar image').appendTo($userdiv);
+          $('<span>').text(res[i].name).appendTo($userdiv);
+          $('<a>').text('add').addClass('add-user right floated ui mini button').appendTo($userdiv);
+        }
+      } else {
 
-        var $userdiv = $('<tr>').appendTo('#user-search-results');
-        $('<td>').text(data[i].name).appendTo($userdiv);
-        $('<td>').text(data[i].email).appendTo($userdiv);
-        $('<td>').text('add').addClass('add-user').appendTo($userdiv);
+        $('#user-search-results').empty();
+        $('<p>').text('No matching results').appendTo('#user-search-results')
       }
 
+    })
+    .fail(function(xhr,err,whatever){
+      console.log(xhr, err, whatever);
     });
 
   });
 
   // add users to current chatroom============================
-
   $(document).on('click', '.add-user', function(){
 
     var userEmail = $(this).prev().text();
@@ -88,6 +95,6 @@ $(document).ready(function() {
     .done(function(res){
       $('.ui.modal.search-invite').modal('hide');
     });
-  })
+  });
 
 }); // end of ready
