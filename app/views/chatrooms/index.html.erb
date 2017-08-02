@@ -4,26 +4,21 @@
 
 <div class="ui divider"></div>
 
-  <div class="ui relaxed stackable grid container">
-    <div class="doubling four column row">
+  <div class="ui container">
+    <div class="ui four special link cards">
 
-        <div class="column">
-          <div class="ui special card">
-            <div class="card">
-              <div class="new-chatroom-action-card">
-                <%= link_to new_chatroom_path  do %>
-                <h3><i class="add icon"></i>New Chatroom</h3>
-                <% end %>
-              </div>
-            </div>
-          </div>
+      <div class="card">
+        <div class="new-chatroom-action-card">
+          <%= link_to new_chatroom_path  do %>
+          <h3><i class="add icon"></i>New Chatroom</h3>
+          <% end %>
         </div>
+      </div>
 
         <!-- iterate through chatrooms and list them as cards -->
         <% @chatrooms.each do |c| %>
-        <div class="column">
 
-          <div class="ui special card">
+          <div class="card">
             <div class="overlay-card-info">
               <h2> <%= c.topic %> </h2>
             </div>
@@ -51,7 +46,6 @@
             </div>
           </div>
           <!-- ui special card================================= -->
-        </div>   <!-- end of column================================= -->
         <% end %>
 
     </div>
