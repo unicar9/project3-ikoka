@@ -3,9 +3,6 @@
 // # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $(document).ready(function() {
-  // $('.ui.sidebar')
-  // .sidebar('overlay')
-  // .sidebar('toggle');
 
   // launch button animation and toggle sidebar=========================
   $(".launch.button").mouseenter(function(){
@@ -64,8 +61,9 @@ $(document).ready(function() {
 
       for (var i = 0; i < data.length; i++) {
         var $userdiv = $('<div>').appendTo('#user-search-results');
+        $('<img>').attr('src', data[i].avatar).addClass('ui avatar image').appendTo($userdiv);
         $('<span>').text(data[i].name).appendTo($userdiv);
-        $('<a>').text('add').addClass('add-user').appendTo($userdiv);
+        $('<a>').text('add').addClass('add-user right floated ui mini button').appendTo($userdiv);
       }
 
     });

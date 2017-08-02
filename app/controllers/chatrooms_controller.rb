@@ -37,7 +37,7 @@ class ChatroomsController < ApplicationController
   def create
     @chatroom = Chatroom.create chatroom_params
     @message = Message.create content:"#{@current_user.name} created this world", chatroom_id:@chatroom.id, user_id:@current_user.id
-    @chatroom.cover = '/assest/bg3.jpg'
+    @chatroom.cover = '/assets/bg3.jpg'
     @chatroom.save
     redirect_to chatroom_path(@chatroom)
 
