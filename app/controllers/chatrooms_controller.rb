@@ -1,5 +1,5 @@
 class ChatroomsController < ApplicationController
-  before_action :check_if_logged_in
+  before_action :check_if_logged_in, except: [:index]
   before_action :get_chatroom, only: [:show, :add_user]
 
   def add_user

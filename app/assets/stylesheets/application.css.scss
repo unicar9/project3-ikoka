@@ -16,7 +16,7 @@
 
 @import "semantic-ui";
 
-.overlay-card-info{
+.overlay-card-info {
   position: absolute;
   margin: 0;
   padding: 0;
@@ -30,3 +30,20 @@
 .ui.dropdown .item{
   display: block;
 }
+
+.new-chatroom-action-card {
+  position: relative;
+  margin: auto;
+  display: block;
+  text-align: center;
+  cursor: pointer;
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+// .new-chatroom-action-card h3 {
+//   display: table-cell;
+//   vertical-align: middle;
+// }
