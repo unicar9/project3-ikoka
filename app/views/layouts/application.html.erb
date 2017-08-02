@@ -21,7 +21,7 @@
           <div class="right menu">
             <!-- right pointing dropdown -->
 
-                <div class="ui top right pointing dropdown icon inverted purple button">
+                <div class="ui top right dropdown icon inverted purple button">
                   <i class="sidebar icon"></i>
                   <div class="menu">
 
@@ -79,17 +79,15 @@
       <i class="close icon"></i>
       <div class="content">
 
-        <%= form_tag('/chatrooms', method: :post, remote: true, authenticity_token: true, class:"ui form") do %>
+        <%= form_for :chatroom, remote: true, authenticity_token: true, :html => { :class => "ui form" } do |f|%>
           <div class="required field">
-            <%= label_tag :topic %>
-            <%= text_field_tag :topic %>
+            <%= f.label :topic %>
+            <%= f.text_field :topic %>
           </div>
-
           <div class="field">
-            <%= label_tag :description %>
-            <%= text_field_tag :description %>
+            <%= f.label :description %>
+            <%= f.text_field :description %>
           </div>
-
           <div class="field">
             <button id="save-chatroom" class="ui purple button">Save and Go</button>
           </div>
