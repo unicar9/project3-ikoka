@@ -64,14 +64,14 @@ $(document).ready(function() {
     // ======= ajax call to fetch message history =====
     $.getJSON('#{ /chatrooms/:id }').done(function(res){
 
-      for (var i = 0; i < res.length; i++) {
+      for (var i = 0; i < res.messages.length; i++) {
         var size = randy(10, 60);
         var speedRotation = randy(-3, 3);
         var hue = randy(0, 255);
 
 
         var m = {
-          content: res[i].content,
+          content: res.messages[i].content,
           velocityX: randy(-3, 3),
           velocityY: randy(-3, 3),
           x: randy(0, canvasWidth),

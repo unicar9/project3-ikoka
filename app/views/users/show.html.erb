@@ -48,13 +48,15 @@
   </div>
 
   <div class="ui three special link cards">
-    <div class="card">
-      <div class="new-chatroom-action-card">
-        <%#= link_to new_chatroom_path  do %>
-          <h3><i class="add icon"></i>New Chatroom</h3>
-        <%# end %>
+    <% if @user == @current_user %>
+      <div class="card">
+        <div class="new-chatroom-action-card">
+          <%#= link_to new_chatroom_path  do %>
+            <h3><i class="add icon"></i>New Chatroom</h3>
+          <%# end %>
+        </div>
       </div>
-    </div>
+    <% end %>
     <% @user.chatrooms.each do |c| %>
     <div class="card">
       <div class="overlay-card-info">

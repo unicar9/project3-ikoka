@@ -26,6 +26,7 @@
       <%= @chatroom.topic %>
     </div>
 
+    <!-- users lists -->
     <div class="ui middle aligned animated list">
       <% @chatroom.users.each do |u| %>
         <div class="item">
@@ -37,7 +38,7 @@
       <% end %>
     </div>
 
-
+    <!-- invite friends button -->
     <div id="invite-friends" class="ui teal button">
       Invite Friends
     </div>

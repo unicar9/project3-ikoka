@@ -57,22 +57,30 @@ $(document).ready(function() {
       url: "/users/search",
       data: { term: query  }
     })
-    .done(function(data){
+    .done(function(res){
 
-      $('#user-search-results').empty();
-      for (var i = 0; i < data.length; i++) {
-        var $userdiv = $('<div>').appendTo('#user-search-results');
-        $('<img>').attr('src', data[i].avatar).addClass('ui avatar image').appendTo($userdiv);
-        $('<span>').text(data[i].name).appendTo($userdiv);
-        $('<a>').text('add').addClass('add-user right floated ui mini button').appendTo($userdiv);
+      if (res) {
+        $('#user-search-results').empty();
+        for (var i = 0; i < res.length; i++) {
+          var $userdiv = $('<div>').appendTo('#user-search-results');
+          $('<img>').attr('src', res[i].avatar).addClass('ui avatar image').appendTo($userdiv);
+          $('<span>').text(res[i].name).appendTo($userdiv);
+          $('<a>').text('add').addClass('add-user right floated ui mini button').appendTo($userdiv);
+        }
+      } else {
+
+        $('#user-search-results').empty();
+        $('<p>').text('No matching results').appendTo('#user-search-results')
       }
 
+    })
+    .fail(function(xhr,err,whatever){
+      console.log(xhr, err, whatever);
     });
 
   });
 
   // add users to current chatroom============================
-
   $(document).on('click', '.add-user', function(){
 
     var username = $(this).prev().text();
@@ -87,6 +95,6 @@ $(document).ready(function() {
     .done(function(res){
       $('.ui.modal.search-invite').modal('hide');
     });
-  })
+  });
 
 }); // end of ready
