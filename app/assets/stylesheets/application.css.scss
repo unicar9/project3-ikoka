@@ -27,6 +27,6 @@
   text-shadow: 2px 2px #333;
 }
 
-.ui.dropdown .menu {
-  display: block!important;
+.menu.left.transition.visible .override {
+  display: block!important!important;
 }
