@@ -30,7 +30,7 @@
                   <% if (@current_user.present?) and (c.users.include? @current_user)  %>
                   <%= link_to "Enter", chatroom_path(c), class:"ui orange button" %>
                   <% else %>
-                  <%= link_to "Join", chatroom_path(c), class:"ui green button" %>
+                  <%= link_to "Join", chatroom_path(c), class:"ui purple button" %>
                   <% end %>
                 </div>
               </div>

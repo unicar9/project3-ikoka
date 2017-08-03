@@ -48,3 +48,23 @@ body {
   height: 200px;
   line-height: 200px;
 }
+
+// customised colors:
+
+.ui.button.purple {
+  background-color: #625772 !important;
+}
+.ui.button.purple:hover {
+  background-color: #55446f !important;
+}
+
+.ui.button.orange{
+  background-color: #F38181 !important;
+}
+.ui.button.orange:hover{
+  background-color: #f56969 !important;
+}
+
+.ui.center.aligned.text.container h1 {
+  color: #55446f;
+}
