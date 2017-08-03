@@ -98,8 +98,8 @@ $(document).ready(function() {
         // set color mode HSB
         sketch.colorMode(sketch.HSB, 255);
 
-        // set canvas background (randomlly choose 1 from 3)
-        bg = sketch.loadImage("/assets/bg" + Math.floor(randy(1,3)) + ".jpg");
+        // set canvas background
+        bg = sketch.loadImage("/assets/bg" + Math.floor(randy(1,4)) + ".jpg");
 
         // set textsize
         sketch.textSize(20);
@@ -137,7 +137,7 @@ $(document).ready(function() {
                 sketch.rect(0, 0, m.size, m.size ).noFill();
               }
               if (m.shape === 1) {
-                var points = getTri(0, 0, m.size); 
+                var points = getTri(0, 0, m.size);
                 sketch.triangle(points.x1, points.y1, points.x2, points.y2, points.x3, points.y3).noFill();
               }
               if (m.shape === 2) {
@@ -160,7 +160,7 @@ $(document).ready(function() {
 
       }; // draw func
 
-  
+
 
     } // s func
 
