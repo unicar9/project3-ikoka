@@ -14,28 +14,29 @@
   <body class="<%= controller_name %> <%= action_name %>">
 
 
+
       <div class="" style="height:15px"></div>
 
       <div class="ui container homeNav">
-        <div class="ui secondary menu">
-          <%= link_to "Explore Chatrooms", chatrooms_path, :method => :get, class: 'ui inverted purple button' %>
+        <div class="ui secondary menu homeNav">
+          <%= link_to "Explore Chatrooms", chatrooms_path, :method => :get, class: 'ui inverted purple button homeNav' %>
 
-          <div class="right menu">
+          <div class="right menu homeNav">
             <!-- right pointing dropdown -->
 
                 <div class="ui top right dropdown icon inverted purple button">
                   <i class="sidebar icon"></i>
-                  <div class="menu">
+                  <div class="menu homeNav">
 
                   <% unless @current_user.present? %>
-                    <div class="item">
+                    <div class="item homeNav">
                       <%= link_to login_path do %>
                       <i class="user icon"></i>
                       Login
                       <% end %>
                     </div>
 
-                    <div class="item">
+                    <div class="item homeNav">
                       <%= link_to new_user_path do %>
                       <i class="edit icon"></i>
                       Signup
@@ -44,21 +45,21 @@
 
                   <% else %>
 
-                    <div class="item">
+                    <div class="item homeNav">
                       <%= link_to user_path(@current_user) do %>
                       <%= cl_image_tag(@current_user.avatar, :width=>300, :height=>300, :crop=>"crop", :gravity=>"face", :secure=>true, class: "ui avatar image")%>
                       <%= @current_user.name %>
                       <% end %>
                     </div>
 
-                    <div class="item">
+                    <div class="item homeNav">
                       <%= link_to edit_user_path(@current_user) do %>
                       <i class="edit icon"></i>
                       Edit Profile
                       <% end %>
                     </div>
 
-                    <div class="item">
+                    <div class="item homeNav">
                       <%= link_to login_path, :method => :delete do %>
                       <i class="power icon"></i>
                       Logout
@@ -77,6 +78,10 @@
     <div class="" style="height:15px"></div>
 
     <%= yield %>
+    <div id="particles-js"></div>
+
+
+
 
   </body>
 </html>
