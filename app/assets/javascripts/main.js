@@ -16,7 +16,7 @@ var randy = function(min, max) {
   return (Math.random() * (max - min) + min);
 };
 
-// function to get a triangle with a center point (and a size)
+// function to get a triangle with a center point (and the length of side)
 var getTri = function(x, y, side){
   var points = {};
   points.x1 = x;
@@ -26,7 +26,7 @@ var getTri = function(x, y, side){
   points.x3 = x + side/2;
   points.y3 = y - side * Math.sin((Math.PI / 3)) / 2;
   return points;
-  // return a object of 3 sets of cordinates
+  // return a object of 3 sets of cordinates, each represents a point of the triangle
 };
 
 
@@ -52,8 +52,6 @@ $(document).ready(function() {
   if ( $('body.chatrooms.show').length ) {
     console.log("We're on chatrooms#show");
 
-    var wave, env;
-    var bg;
 
     var canvasWidth = $('#messages').width();
 
@@ -88,6 +86,8 @@ $(document).ready(function() {
       // var notes = [60, 64, 67, 72];
       // var freq = sketch.midiToFreq(notes[Math.floor(randy(0, 5))]);
       // console.log(notes[Math.floor(randy(0, 5))]);
+
+      var bg;
 
       sketch.setup = function() {
         sketch.createCanvas( canvasWidth, 600 );
@@ -158,17 +158,15 @@ $(document).ready(function() {
             m.velocityY *= -1
           }
 
-
         } // for loop
-
 
       }; // draw func
 
-    };
+    } // s func
 
     // create a new p5 instance
     var canvas = new p5(s, 'messages');
 
-  }
+  } // if
 
 }); // end of document ready
