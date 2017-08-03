@@ -4,7 +4,7 @@
 
 // create msgs
 var msgs = msgs || [];
-
+var alphaEdge = alphaEdge || 0;
 
 
 App.messages = App.cable.subscriptions.create('MessagesChannel', {
@@ -43,6 +43,11 @@ App.messages = App.cable.subscriptions.create('MessagesChannel', {
       offsetRotation: randy(0, 360),
       lifespan: 1800
     };
+
+    if(data.message.match(/edge/i) ){
+      alphaEdge = 255;
+    }
+
     msgs.push(m);
     env.play();
     wave.freq(m.freq);
