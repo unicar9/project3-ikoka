@@ -5,6 +5,9 @@
 // create msgs
 var msgs = msgs || [];
 var alphaEdge = alphaEdge || 0;
+var alphaSausage = alphaSausage || 0;
+var alphaLuke = alphaLuke || 0;
+
 
 
 App.messages = App.cable.subscriptions.create('MessagesChannel', {
@@ -46,6 +49,12 @@ App.messages = App.cable.subscriptions.create('MessagesChannel', {
 
     if(data.message.match(/edge/i) ){
       alphaEdge = 255;
+    }
+    if(data.message.match(/luke/i) ){
+      alphaLuke = 255;
+    }
+    if(data.message.match(/wdi22/i) ){
+      alphaSausage = 255;
     }
 
     msgs.push(m);
