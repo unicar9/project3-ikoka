@@ -27,7 +27,7 @@
     </div>
 
     <!-- users lists -->
-    <div class="ui middle aligned animated list">
+    <div class="ui middle aligned animated list refreshTest">
       <% @chatroom.users.each do |u| %>
         <div class="item">
           <%= cl_image_tag(u.avatar, :width=>300, :height=>300, :crop=>"crop", :gravity=>"face", :secure=>true, class: "ui avatar image") %>
