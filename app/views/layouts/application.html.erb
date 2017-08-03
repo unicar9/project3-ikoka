@@ -37,10 +37,10 @@
 
                   <% else %>
 
-                    <div class="ui circular item purple basic button homeNav">
+                    <div class="ui item large purple image label homeNav">
                       <%= link_to user_path(@current_user) do %>
-                      <%= cl_image_tag(@current_user.avatar, :width=>300, :height=>300, :crop=>"crop", :gravity=>"face", :secure=>true, class: "ui avatar image")%>
-                      <!-- <%= @current_user.name %> -->
+                      <%= cl_image_tag(@current_user.avatar, :width=>100, :height=>100, :crop=>"crop", :gravity=>"face", :secure=>true, class: "ui avatar image")%>
+                      <%= @current_user.name %>
                       <% end %>
                     </div>
 
