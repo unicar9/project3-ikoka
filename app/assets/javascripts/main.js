@@ -1,6 +1,7 @@
 
 // == msgs array to store all messages in this chatroom =====
 var msgs = msgs || [];
+var alphaEdge = 0;
 
 var wave, env;
 env = new p5.Env();
@@ -92,6 +93,7 @@ $(document).ready(function() {
     var s = function(sketch) {
 
       var bg;
+      var edge;
 
       sketch.setup = function() {
 
@@ -110,6 +112,7 @@ $(document).ready(function() {
 
         // set canvas background
         bg = sketch.loadImage("/assets/bg" + Math.floor(randy(1,4)) + ".jpg");
+        edge = sketch.loadImage("/assets/edge.png");
 
         // set textsize
         sketch.textSize(20);
@@ -119,8 +122,14 @@ $(document).ready(function() {
       sketch.draw = function() {
 
         sketch.angleMode(sketch.DEGREES);
-
+        sketch.noTint();
         sketch.background(bg);
+        sketch.tint(255, alphaEdge);
+        sketch.image(edge, 0, 0);
+
+        if (alphaEdge > 0) {
+          alphaEdge -= 1;
+        }
 
         for (var i = 0; i < msgs.length; i++) {
 
