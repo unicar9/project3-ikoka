@@ -47,6 +47,7 @@ App.messages = App.cable.subscriptions.create('MessagesChannel', {
       lifespan: 1800
     };
 
+    // when the message contains below names, make them appear on screen
     if(data.message.match(/edge/i) ){
       alphaEdge = 255;
     }

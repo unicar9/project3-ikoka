@@ -50,6 +50,17 @@ class UsersController < ApplicationController
   end
 
   def update
+    @user = @current_user
+
+    if params[:image].present?
+      req = Cloudinary::Uploader.upload params[:image]
+      @user.avatar= req['public_id']
+
+    end
+    @user.update user_params
+
+    redirect_to user_path(params["id"])
+
   end
 
   def destroy

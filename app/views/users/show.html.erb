@@ -7,10 +7,10 @@
       <div class="ui items">
         <div class="item">
           <%= cl_image_tag(@user.avatar, :width=>100, :height=>100, :crop=>"crop", :gravity=>"face", :secure=>true, class: "ui image rounded") %>
-          <div class="content">
-            <p class="header"><%= @user.name %></p>
+          <div class="middle aligned content">
+            <p class="header">Name: <%= @user.name %></p>
             <div class="meta">
-              <p class="price"><%= @user.email %></p>
+              <p class="price">Email: <%= @user.email %></p>
               <p class="price">Joined iKoka since <%= @user.created_at.strftime("%d %b %Y") %></p>
             </div>
           </div>

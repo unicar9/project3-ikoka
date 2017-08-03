@@ -22,7 +22,8 @@ var $upload;
 
 $(document).on('drop', function (e) {
   $('#uploader').removeClass('placeholder');
-  $('#uploader').empty();
+  $('#tip').hide();
+  $('#croppie').empty();
   e.stopPropagation();
   e.preventDefault();
 
@@ -34,7 +35,7 @@ $(document).on('drop', function (e) {
     reader.onload = function(e) {
 
       myCroppie = new Croppie(
-        document.getElementById('uploader'),
+        document.getElementById('croppie'),
         {
            viewport: { width: 150, height: 150 },
            boundary: { width: 400, height: 300 },
@@ -45,7 +46,7 @@ $(document).on('drop', function (e) {
     };
 
     reader.readAsDataURL(file);
-    $upload = $('<a>').text('Upload').attr('id','upload-btn').addClass('ui small button').prependTo('#uploader');
+    $upload = $('<a>').text('Preview').attr('id','upload-btn').addClass('ui purple small button').prependTo('#croppie');
     // creating button element
 
   } // end of if

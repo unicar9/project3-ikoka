@@ -32,9 +32,6 @@ var getTri = function(x, y, side){
 
 $(document).ready(function() {
 
-  // ---- initialize semantic-ui actions -----
-  $('.ui.dropdown').dropdown();
-
   $('.special.cards .image').dimmer({
     on: 'hover'
   });
@@ -92,6 +89,8 @@ $(document).ready(function() {
 
       var bg;
       var edge;
+      var luke;
+      var sausage;
 
 
       sketch.setup = function() {

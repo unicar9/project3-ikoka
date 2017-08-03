@@ -24,17 +24,25 @@
 
       <div class="field">
         <%= f.label :avatar %>
+
         <div id="uploader" class="placeholder">
-            Drag and Drop Your Image Here to Crop
+            <div id="tip">Drag and Drop Your Image Here to Crop</div>
             <img id="result" src="" />
+            <div id="croppie">
+
+            </div>
         </div>
-      
+
         <%= hidden_field_tag :image %>
       </div>
 
 
       <button class="ui purple labeled icon button">
-        Create New Account
+        <% if @current_user.present? %>
+          Update Account
+        <% else %>
+          Create New Account
+        <% end %>
         <i class="add icon"></i>
       </button>
 
