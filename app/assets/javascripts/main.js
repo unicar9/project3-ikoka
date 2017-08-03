@@ -1,4 +1,3 @@
-
 // == msgs array to store all messages in this chatroom =====
 var msgs = msgs || [];
 
@@ -80,17 +79,19 @@ $(document).ready(function() {
           size: size,
           hue: hue,
           speedRotation: speedRotation,
-          offsetRotation: randy(0, 360)
+          offsetRotation: randy(0, 360),
+          lifespan: 1800
         };
         msgs.push(m);
       }
     });
     // ======= ajax call to fetch message history ==============
-
+    var alpha = 0;
     // ========= define the function to create new p5 instance ===========
     var s = function(sketch) {
 
       var bg;
+
 
       sketch.setup = function() {
 
@@ -110,6 +111,7 @@ $(document).ready(function() {
         // set canvas background
         bg = sketch.loadImage("/assets/bg" + Math.floor(randy(1,4)) + ".jpg");
 
+        luke = sketch.loadImage("/assets/luke.png");
         // set textsize
         sketch.textSize(20);
 
@@ -119,15 +121,20 @@ $(document).ready(function() {
 
         sketch.angleMode(sketch.DEGREES);
 
+        sketch.noTint();
         sketch.background(bg);
+        sketch.tint(255, alpha);
+        sketch.image(luke, 0, 0);
+
+
 
         for (var i = 0; i < msgs.length; i++) {
 
           var m = msgs[i];
           m.x += m.velocityX;
           m.y += m.velocityY;
-          sketch.stroke(m.hue, 200, 255);
-          sketch.fill(m.hue, 200, 255);
+          sketch.stroke(m.hue, 200, 255, m.lifespan);
+          sketch.fill(m.hue, 200, 255, m.lifespan);
           sketch.text(m.user + " said: " + m.content, m.x, m.y);
 
           // draw different shapes along with text messages=============================
@@ -165,11 +172,24 @@ $(document).ready(function() {
             m.velocityY *= -1
           }
 
+          if (m.lifespan > 0) {
+            m.lifespan -= 1;
+          } else {
+            msgs.splice(i, 1);
+          }
+
         } // for loop
 
       }; // draw func
 
-      
+      sketch.keyTyped = function() {
+        if (sketch.key === 'l') {
+          alpha = 255;
+        } else if (sketch.key === 'e') {
+          alpha = 0;
+        }
+
+      }; // keyTyped func
 
 
 

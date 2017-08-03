@@ -19,56 +19,48 @@
 
       <div class="ui container homeNav">
         <div class="ui secondary menu homeNav">
-          <%= link_to "Explore Chatrooms", chatrooms_path, :method => :get, class: 'ui orange button homeNav' %>
+          <%= link_to "Explore Chatrooms", chatrooms_path, :method => :get, class: 'ui item orange button homeNav' %>
 
           <div class="right menu homeNav">
             <!-- right pointing dropdown -->
 
-                <div class="ui top right dropdown icon orange button">
-                  <i class="sidebar icon"></i>
-                  <div class="menu homeNav">
-
                   <% unless @current_user.present? %>
-                    <div class="item homeNav">
-                      <%= link_to login_path do %>
-                      <i class="user icon"></i>
-                      Login
-                      <% end %>
+                    <div class="ui orange button homeNav">
+                      <%= link_to 'Login', login_path %>
+                      <!-- <i class="user icon"></i> -->
                     </div>
 
-                    <div class="item homeNav">
-                      <%= link_to new_user_path do %>
-                      <i class="edit icon"></i>
-                      Signup
-                      <% end %>
+                    <div class="ui item orange button homeNav">
+                      <%= link_to 'Signup', new_user_path %>
+                      <!-- <i class="edit icon"></i> -->
                     </div>
 
                   <% else %>
 
-                    <div class="item homeNav">
+                    <div class="ui circular item purple basic button homeNav">
                       <%= link_to user_path(@current_user) do %>
                       <%= cl_image_tag(@current_user.avatar, :width=>300, :height=>300, :crop=>"crop", :gravity=>"face", :secure=>true, class: "ui avatar image")%>
-                      <%= @current_user.name %>
+                      <!-- <%= @current_user.name %> -->
                       <% end %>
                     </div>
 
-                    <div class="item homeNav">
+                    <div class="ui item orange button homeNav">
                       <%= link_to edit_user_path(@current_user) do %>
-                      <i class="edit icon"></i>
+                      <!-- <i class="edit icon"></i> -->
                       Edit Profile
                       <% end %>
                     </div>
 
-                    <div class="item homeNav">
+                    <div class="ui item orange button homeNav">
                       <%= link_to login_path, :method => :delete do %>
-                      <i class="power icon"></i>
+                      <!-- <i class="power icon"></i> -->
                       Logout
                       <% end %>
                     </div>
 
                   <% end %>
-                  </div>
-                </div>
+
+
           </div>
         </div>
       </div>
