@@ -64,28 +64,26 @@ $(document).ready(function() {
     $.getJSON('#{ /chatrooms/:id }').done(function(res){
 
       for (var i = 0; i < res.length; i++) {
-        var size = randy(10, 60);
+        var size = randy(40, 80);
         var speedRotation = randy(-3, 3);
         var hue = randy(0, 255);
 
-
         var m = {
           content: res[i].content,
-          velocityX: randy(-3, 3),
-          velocityY: randy(-3, 3),
+          velocityX: randy(-2, 2),
+          velocityY: randy(-2, 2),
           x: randy(0, canvasWidth),
           y: randy(0, 600),
           shape: Math.floor(randy(0, 3)),
           size: size,
           hue: hue,
-          speedRotation: speedRotation
+          speedRotation: speedRotation,
+          offsetRotation: randy(0, 360)
         };
         msgs.push(m);
       }
     });
     // ======= ajax call to fetch message history =====
-
-
 
     // ========= define the function to create new p5 instance ===========
     var s = function(sketch) {
@@ -106,13 +104,13 @@ $(document).ready(function() {
 
         // set color mode HSB
         sketch.colorMode(sketch.HSB, 255);
-
-        // set canvas background
-        bg = sketch.loadImage("/assets/gradient-bg-3.jpg");
-
+        bg = sketch.loadImage("/assets/bg.jpg");
+        sketch.textSize(20);
       };
 
       sketch.draw = function() {
+
+        sketch.angleMode(sketch.DEGREES);
 
         sketch.background(bg);
 
@@ -122,20 +120,44 @@ $(document).ready(function() {
           m.x += m.velocityX;
           m.y += m.velocityY;
           sketch.stroke(m.hue, 200, 255);
-          sketch.text(m.content, m.x, m.y );
+          sketch.fill(m.hue, 200, 255);
+          sketch.text(m.content, m.x, m.y);
 
 
-          if (m.shape === 0) {
-            sketch.rect(m.x, m.y, m.size, m.size ).noFill();
-          }
-          if (m.shape === 1) {
-            var points = getTri(m.x, m.y, m.size);   // using the msg's x,y coordinate(m.x, m.y) and size value(m.size) to genereate a triangle
-            sketch.triangle(points.x1, points.y1, points.x2, points.y2, points.x3, points.y3).noFill();
-          }
-          if (m.shape === 2) {
-            sketch.ellipse(m.x, m.y, m.size, m.size).noFill();
-          }
 
+          // draw different shapes along with text messages=============================
+          // shapes are only strokes without fill=============================
+          sketch.noFill();
+
+          // if(i == 0){
+          sketch.push();
+
+            sketch.translate(m.x, m.y);
+
+            sketch.push();
+
+              sketch.translate(0, 0);
+              sketch.rotate( m.offsetRotation + sketch.frameCount * m.speedRotation);
+
+
+              if (m.shape === 0) {
+                sketch.rect(0, 0, m.size, m.size );
+              }
+              if (m.shape === 1) {
+                var points = getTri(0, 0, m.size);
+                sketch.triangle(points.x1, points.y1, points.x2, points.y2, points.x3, points.y3);
+              }
+              if (m.shape === 2) {
+                sketch.ellipse(0, 0, m.size, m.size);
+              }
+            sketch.pop();
+          sketch.pop();
+
+          // }
+
+
+
+          // bounce effects====================================
           if(m.x >= canvasWidth || m.x <= 0) {
             m.velocityX *= -1
           }
