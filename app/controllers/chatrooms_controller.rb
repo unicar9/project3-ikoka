@@ -25,11 +25,8 @@ class ChatroomsController < ApplicationController
 
   def show
 
-    @message = Message.new content:"Here I am!"
-    @message.user = @current_user
-    @message.chatroom = @chatroom
-
-
+    @message = Message.new
+    
     @messages = @chatroom.messages
     @users = @chatroom.users
 
