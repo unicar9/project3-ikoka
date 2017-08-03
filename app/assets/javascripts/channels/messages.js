@@ -40,7 +40,8 @@ App.messages = App.cable.subscriptions.create('MessagesChannel', {
       freq: randy(440, 800),
       hue: randy(0, 255),
       speedRotation: randy(-3,3),
-      offsetRotation: randy(0, 360)
+      offsetRotation: randy(0, 360),
+      lifespan: 1800
     };
     msgs.push(m);
     env.play();

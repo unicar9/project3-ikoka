@@ -80,7 +80,8 @@ $(document).ready(function() {
           size: size,
           hue: hue,
           speedRotation: speedRotation,
-          offsetRotation: randy(0, 360)
+          offsetRotation: randy(0, 360),
+          lifespan: 1800
         };
         msgs.push(m);
       }
@@ -126,8 +127,8 @@ $(document).ready(function() {
           var m = msgs[i];
           m.x += m.velocityX;
           m.y += m.velocityY;
-          sketch.stroke(m.hue, 200, 255);
-          sketch.fill(m.hue, 200, 255);
+          sketch.stroke(m.hue, 200, 255, m.lifespan);
+          sketch.fill(m.hue, 200, 255, m.lifespan);
           sketch.text(m.user + " said: " + m.content, m.x, m.y);
 
           // draw different shapes along with text messages=============================
@@ -163,6 +164,12 @@ $(document).ready(function() {
 
           if(m.y >= 600 || m.y <= 0) {
             m.velocityY *= -1
+          }
+
+          if (m.lifespan > 0) {
+            m.lifespan -= 1;
+          } else {
+            msgs.splice(i, 1);
           }
 
         } // for loop
