@@ -40,9 +40,20 @@ $(document).ready(function() {
   });
   //------------------------------------------
 
+  //------ create new chatroom modal ----------
+  $('.new-chatroom-action-card').on('click', function(){
+    console.log('clicked');
+    $('.ui.modal.new-chatroom').modal('show');
+  });
+
+  $('#save-chatroom').on('click', function(){
+    $('.ui.modal.new-chatroom').modal('hide');
+  });
+  //------------------------------------------
+
   /* ------------------------------
   | following code only excute on |
-  |      chatromms#show page      |
+  |      chatrooms#show page      |
   ------------------------------ */
   if ( $('body.chatrooms.show').length ) {
     console.log("We're on chatrooms#show");
