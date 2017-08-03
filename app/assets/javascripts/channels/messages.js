@@ -19,7 +19,7 @@ App.messages = App.cable.subscriptions.create('MessagesChannel', {
 
     data = {
       message: message.content,
-      user: message.user
+      user: message.user.name
     }
     ************************************/
 
@@ -30,6 +30,7 @@ App.messages = App.cable.subscriptions.create('MessagesChannel', {
 
     var m = {
       content: data.message,
+      user: data.user,
       velocityX: randy(-2, 2),
       velocityY: randy(-2, 2),
       x: 400,

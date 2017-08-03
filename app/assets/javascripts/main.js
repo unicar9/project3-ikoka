@@ -95,8 +95,8 @@ $(document).ready(function() {
         // set color mode HSB
         sketch.colorMode(sketch.HSB, 255);
 
-        // set canvas background (randomlly choose 1 from 3)
-        bg = sketch.loadImage("/assets/bg" + Math.floor(randy(1,3)) + ".jpg");
+        // set canvas background
+        bg = sketch.loadImage("/assets/bg" + Math.floor(randy(1,4)) + ".jpg");
 
         // set textsize
         sketch.textSize(20);
