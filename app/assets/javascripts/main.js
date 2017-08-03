@@ -87,7 +87,6 @@ $(document).ready(function() {
       }
     });
     // ======= ajax call to fetch message history ==============
-    var alpha = 0;
     // ========= define the function to create new p5 instance ===========
     var s = function(sketch) {
 
@@ -113,8 +112,8 @@ $(document).ready(function() {
         // set canvas background
         bg = sketch.loadImage("/assets/bg" + Math.floor(randy(1,4)) + ".jpg");
         edge = sketch.loadImage("/assets/edge.png");
-
         luke = sketch.loadImage("/assets/luke.png");
+        sausage = sketch.loadImage("/assets/sausage.png");
         // set textsize
         sketch.textSize(20);
 
@@ -123,14 +122,28 @@ $(document).ready(function() {
       sketch.draw = function() {
 
         sketch.angleMode(sketch.DEGREES);
-        sketch.noTint();
+        sketch.noTint(); // do not affect backgroundimage everytime showing the pics
         sketch.background(bg);
+
+        // when message contains "edge", "luke" or "wdi22", show pics at random position and fade================
+        // need refactor!!!!
         sketch.tint(255, alphaEdge);
-        sketch.image(edge, 0, 0);
+        sketch.image(edge, sketch.random(canvasWidth), sketch.random(600));
+        sketch.tint(255, alphaLuke);
+        sketch.image(luke, sketch.random(canvasWidth), sketch.random(600));
+        sketch.tint(255, alphaSausage);
+        sketch.image(sausage, sketch.random(canvasWidth), sketch.random(600));
 
         if (alphaEdge > 0) {
-          alphaEdge -= 1;
+          alphaEdge -= 4;
         }
+        if (alphaLuke > 0) {
+          alphaLuke -= 4;
+        }
+        if (alphaSausage > 0) {
+          alphaSausage -= 4;
+        }
+        // when message contains "edge", "luke" or "wdi22", show pics at random position and fade============
 
         for (var i = 0; i < msgs.length; i++) {
 
@@ -176,6 +189,8 @@ $(document).ready(function() {
             m.velocityY *= -1
           }
 
+          // ============= lifespan decrease in the draw loop, lifespan represents transparency ===========
+          // ============= when lifespan less than 0, remove the message out of the messages array===========
           if (m.lifespan > 0) {
             m.lifespan -= 1;
           } else {
@@ -185,17 +200,6 @@ $(document).ready(function() {
         } // for loop
 
       }; // draw func
-
-      sketch.keyTyped = function() {
-        if (sketch.key === 'l') {
-          alpha = 255;
-        } else if (sketch.key === 'e') {
-          alpha = 0;
-        }
-
-      }; // keyTyped func
-
-
 
     } // s func
 
