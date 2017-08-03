@@ -34,6 +34,7 @@ gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass'
 gem 'rails_12factor'
 
 
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

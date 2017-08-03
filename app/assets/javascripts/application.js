@@ -14,6 +14,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui
+//= require particles
 //= require croppie
 //= require semantic-ui
 //= require p5

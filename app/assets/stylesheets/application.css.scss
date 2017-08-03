@@ -21,10 +21,6 @@ body {
   background-color: #A9EEE6;
 }
 
-.homeNav {
-  opacity: 0.8!important;
-}
-
 .overlay-card-info {
   position: absolute;
   margin: 0;
@@ -34,6 +30,19 @@ body {
   color: white;
   z-index: 1;
   text-shadow: 2px 2px #333;
+}
+
+#uploader {
+  cursor:pointer;
+  position:relative;
+  overflow:hidden;
+  width:450px;
+  background:transparent;
+  border:3px dashed #e8e8e8;
+  color:#555;
+  font-weight:bold;
+  z-index: 1000000;
+  text-align: center;
 }
 
 #uploader:hover {
@@ -47,4 +56,14 @@ body {
 .placeholder {
   height: 200px;
   line-height: 200px;
+}
+
+#particles-js {
+  position:fixed;
+  top:0;
+  left:0;
+}
+
+.ui .homeNav {
+  z-index: 100000!important;
 }
