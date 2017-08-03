@@ -151,14 +151,18 @@ $(document).on('drop', function (e) {
 
 $(document).on('click', '#upload-btn', function() {
   myCroppie.result({
-    type: 'blob',
+    type: 'base64',
     size: 'viewport'
-  }).then(function(blob){
-    console.log(myCroppie.result('blob'));
-    $('#result').attr('src', window.URL.createObjectURL(blob));
-    var fd = new FormData($('#new_user'));
-    fd.append('file', blob);
-    debugger;
+  }).then(function(base64){
+    console.log(myCroppie.result('base64'));
+    $('#result').attr('src', base64);
+
+    $('#image').val(base64);
+
+    // var fd = new FormData($('#new_user'));
+    // fd.append('file', base64);
+    // debugger;
+    //
   });
 
 });

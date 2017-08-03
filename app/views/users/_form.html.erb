@@ -41,7 +41,8 @@
             <img id="result" src="" />
         </div>
         <!-- <input type="file" name="userprofile_picture" id="filePhoto" /> -->
-        <%= f.cl_image_upload :avatar, :id => 'upload', :style => "display:none" %>
+        <!-- <#%#= f.cl_image_upload :avatar, :id => 'upload', :style => "display:none" %> -->
+        <%= hidden_field_tag :image %>
       </div>
 
 
