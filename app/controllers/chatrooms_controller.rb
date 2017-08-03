@@ -31,8 +31,8 @@ class ChatroomsController < ApplicationController
 
     respond_to do |format|
       format.html {}
-      format.json { render :json => { :messages => @messages,
-                                      :users => @users }}
+      format.json { render json: @messages,
+        :include => :user }
     end
   end
 
@@ -45,7 +45,7 @@ class ChatroomsController < ApplicationController
     @chatroom.cover = "/assets/cover#{[1,2,3].sample}.png"
     @chatroom.save
 
-    @message = Message.create content:"#{@current_user.name} created this world", chatroom_id:@chatroom.id, user_id:@current_user.id
+    @message = Message.create content:"I created this world", chatroom_id:@chatroom.id, user_id:@current_user.id
 
     redirect_to chatroom_path(@chatroom)
 
