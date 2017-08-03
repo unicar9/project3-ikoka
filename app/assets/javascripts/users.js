@@ -11,7 +11,7 @@ $(document).ready(function() {
   });
 
   $('#save-chatroom').on('click', function(){
-    $('.ui.modal.new-chatroom').modal('hide');
+    // $('.ui.modal.new-chatroom').modal('hide');
   });
   //------------------------------------------
 

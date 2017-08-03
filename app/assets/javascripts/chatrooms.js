@@ -70,7 +70,7 @@ $(document).ready(function() {
       } else {
 
         $('#user-search-results').empty();
-        $('<p>').text('No matching results').appendTo('#user-search-results')
+        $('<p>').text('No results found').appendTo('#user-search-results')
       }
 
     })
