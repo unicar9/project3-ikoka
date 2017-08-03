@@ -16,24 +16,31 @@
 
 @import "semantic-ui";
 
-.overlay-card-info {
-  position: absolute;
-  margin: 0;
-  padding: 0;
-  top: 10px;
-  left: 10px;
-  color: white;
-  z-index: 1;
-  text-shadow: 2px 2px #333;
+
+#uploader {
+  cursor:pointer;
+  position:relative;
+  overflow:hidden;
+  width:450px;
+  background:transparent;
+  border:3px dashed #e8e8e8;
+  color:#555;
+  font-weight:bold;
+  z-index: 1000000;
+  text-align: center;
+  // font-size: 20px;
+  // line-height: 400px;
 }
 
+#uploader:hover {
+  color:#999;
+}
 
+#filePhoto {
+  display:none;
+}
 
-.new-chatroom-action-card {
-  position: relative;
-  height: 100%;
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.placeholder {
+  height: 200px;
+  line-height: 200px;
 }

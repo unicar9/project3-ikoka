@@ -27,15 +27,15 @@ App.messages = App.cable.subscriptions.create('MessagesChannel', {
     random properties and
     broadcasted message content,
     then push into msgs array */
-    
+
     var m = {
       content: data.message,
-      velocityX: randy(-3, 3),
-      velocityY: randy(-3, 3),
+      velocityX: randy(-2, 2),
+      velocityY: randy(-2, 2),
       x: 400,
       y: 400,
       shape: Math.floor(randy(0, 3)),
-      size: randy(10, 100),
+      size: randy(40, 80),
       freq: randy(440, 800),
       hue: randy(0, 255),
       speedRotation: randy(-3,3),

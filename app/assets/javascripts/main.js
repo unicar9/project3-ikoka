@@ -58,7 +58,6 @@ $(document).ready(function() {
         var speedRotation = randy(-3, 3);
         var hue = randy(0, 255);
 
-
         var m = {
           content: res.messages[i].content,
           velocityX: randy(-3, 3),
@@ -75,8 +74,6 @@ $(document).ready(function() {
       }
     });
     // ======= ajax call to fetch message history ==============
-
-
 
     // ========= define the function to create new p5 instance ===========
     var s = function(sketch) {
@@ -137,7 +134,7 @@ $(document).ready(function() {
                 sketch.rect(0, 0, m.size, m.size ).noFill();
               }
               if (m.shape === 1) {
-                var points = getTri(0, 0, m.size); 
+                var points = getTri(0, 0, m.size);
                 sketch.triangle(points.x1, points.y1, points.x2, points.y2, points.x3, points.y3).noFill();
               }
               if (m.shape === 2) {
@@ -160,7 +157,7 @@ $(document).ready(function() {
 
       }; // draw func
 
-  
+
 
     } // s func
 
