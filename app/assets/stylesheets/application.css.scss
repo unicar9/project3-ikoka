@@ -58,12 +58,27 @@ body {
   line-height: 200px;
 }
 
-
 .ui .homeNav {
   z-index: 100000!important;
 }
 
+
 // customised colors:
+.ui.orange.label {
+  background-color: #F38181 !important;
+  color: #FFFFFF !important;
+  text-decoration: none;
+  margin-right: 0.7em;
+}
+
+.ui.orange.label a {
+  opacity: 1;
+}
+
+.ui.orange.label:hover{
+  background-color: #f56969 !important;
+
+}
 
 .ui.button.purple {
   background-color: #625772 !important;
@@ -74,7 +89,12 @@ body {
 
 .ui.button.orange{
   background-color: #F38181 !important;
-  color: #FFFFFF;
+  color: #FFFFFF !important;
+}
+
+.ui.button.orange a{
+  text-decoration: none;
+  color: #FFFFFF !important;
 }
 .ui.button.orange:hover{
   background-color: #f56969 !important;
