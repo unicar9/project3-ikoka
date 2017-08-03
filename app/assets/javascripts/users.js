@@ -1,6 +1,8 @@
 // # Place all the behaviors and hooks related to the matching controller here.
 // # All this logic will automatically be available in application.js.
 // # You can use CoffeeScript in this file: http://coffeescript.org/
+
+// ==========================allow users to crop and resize images before uploading to cloudinary===============
 var myCroppie;
 
 $(document).ready(function() {
@@ -23,9 +25,11 @@ $(document).on('drop', function (e) {
   e.stopPropagation();
   e.preventDefault();
 
+  // getting the file
   var file = e.originalEvent.dataTransfer.files[0];
   if (file) {
     var reader = new FileReader();
+    // while reading the file creating new croppie instance
     reader.onload = function(e) {
 
       myCroppie = new Croppie(
@@ -41,10 +45,13 @@ $(document).on('drop', function (e) {
 
     reader.readAsDataURL(file);
     $upload = $('<a>').text('Upload').attr('id','upload-btn').addClass('ui small button').prependTo('#uploader');
+    // creating button element
 
   } // end of if
 });
 
+// click upload button to get the result, preview the result and
+// assign the value to the hidden form field for cloudinary upload
 $(document).on('click', '#upload-btn', function() {
   myCroppie.result({
     type: 'base64',
@@ -52,13 +59,10 @@ $(document).on('click', '#upload-btn', function() {
   }).then(function(base64){
     console.log(myCroppie.result('base64'));
     $('#result').attr('src', base64);
+    // showing the preview
 
     $('#image').val(base64);
 
-    // var fd = new FormData($('#new_user'));
-    // fd.append('file', base64);
-    // debugger;
-    //
   });
 
 });
