@@ -10,12 +10,21 @@
 puts "ikoka koka koka planting...."
 
 User.destroy_all
-u1 = User.create name:"unicar", email:"unicar9@gmail.com", password:"panda", avatar:"https://robohash.org/unicar?size=100x100&set=set2&bgset=bg1", is_admin:true
-u2 = User.create name:"panda", email:"panda@gmail.com", password:"panda", avatar:"https://robohash.org/panda?size=100x100&set=set2&bgset=bg1", is_admin:true
-u3 = User.create name:"lingxiao", email:"lingxiao@gmail.com", password:"panda", avatar:"https://robohash.org/lingxiao?size=100x100&set=set2&bgset=bg1"
-u4 = User.create name:"zhuzhu", email:"zhuzhu@gmail.com", password:"panda", avatar:"https://robohash.org/zhuzhu?size=100x100&set=set2&bgset=bg1"
-u5 = User.create name:"dama", email:"wanglingxiao@gmail.com", password:"panda", avatar:"https://robohash.org/dama?size=100x100&set=set2&bgset=bg1"
-u6 = User.create name:"gungun", email:"cutepanda@gmail.com", password:"panda", avatar:"https://robohash.org/gungun?size=100x100&set=set2&bgset=bg1"
+u1 = User.create name:"weijia", email:"weijia@gmail.com", password:"panda", avatar:"https://robohash.org/weijia?size=100x100&set=set2&bgset=bg1", is_admin:true
+u2 = User.create name:"lingxiao", email:"lingxiao@gmail.com", password:"panda", avatar:"https://robohash.org/lingxiao?size=100x100&set=set2&bgset=bg1", is_admin:true
+u3 = User.create name:"ryan", email:"ryan@gmail.com", password:"panda", avatar:"https://robohash.org/ryan?size=100x100&set=set2&bgset=bg1"
+u4 = User.create name:"jonathan", email:"jonathan@gmail.com", password:"panda", avatar:"https://robohash.org/jonathan?size=100x100&set=set2&bgset=bg1"
+u5 = User.create name:"alice", email:"alice@gmail.com", password:"panda", avatar:"https://robohash.org/alice?size=100x100&set=set2&bgset=bg1"
+u6 = User.create name:"james", email:"james@gmail.com", password:"panda", avatar:"https://robohash.org/james?size=100x100&set=set2&bgset=bg1"
+u7 = User.create name:"andy", email:"andy@gmail.com", password:"panda", avatar:"https://robohash.org/andy?size=100x100&set=set2&bgset=bg1"
+u8 = User.create name:"max", email:"max@gmail.com", password:"panda", avatar:"https://robohash.org/max?size=100x100&set=set2&bgset=bg1"
+u9 = User.create name:"quinn", email:"quinn@gmail.com", password:"panda", avatar:"https://robohash.org/quinn?size=100x100&set=set2&bgset=bg1"
+u10 = User.create name:"zinh", email:"zinh@gmail.com", password:"panda", avatar:"https://robohash.org/zinh?size=100x100&set=set2&bgset=bg1"
+u11 = User.create name:"anusha", email:"anusha@gmail.com", password:"panda", avatar:"https://robohash.org/anusha?size=100x100&set=set2&bgset=bg1"
+u12 = User.create name:"john", email:"john@gmail.com", password:"panda", avatar:"https://robohash.org/john?size=100x100&set=set2&bgset=bg1"
+u13 = User.create name:"michelle", email:"michelle@gmail.com", password:"panda", avatar:"https://robohash.org/michelle?size=100x100&set=set2&bgset=bg1"
+u14 = User.create name:"julian", email:"julian@gmail.com", password:"panda", avatar:"https://robohash.org/julian?size=100x100&set=set2&bgset=bg1"
+
 
 Chatroom.destroy_all
 c1 = Chatroom.create topic:"Welcome to iKoka", description:"iKoka is awesome!", cover:"http://lorempixel.com/400/200/abstract/1"

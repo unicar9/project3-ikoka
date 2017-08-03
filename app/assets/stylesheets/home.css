@@ -32,11 +32,11 @@
 }
 
 #get-started{
-	margin-top: 5vh;	
+	margin-top: 5vh;
 }
 
 .text-shadow-pop-right {
-	margin-top: 25vh;
+	margin-top: 10vh;
 	position: relative;
 	z-index: 1000000!important;
 
