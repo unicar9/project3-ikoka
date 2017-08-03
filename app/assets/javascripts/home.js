@@ -11,8 +11,7 @@ $(document).ready(function() {
       // setup() executes only once and at the very beginning
       sketch.setup = function() {
         sketch.createCanvas(sketch.windowWidth, sketch.windowHeight);
-        // set background to gray
-        // sketch.background(128);
+
       };
 
       // draw() executes over and over once setup() has executed
@@ -40,8 +39,7 @@ $(document).ready(function() {
         // set the sketch width and height to the 5 pixels less than
         // windowWidth and windowHeight. This gets rid of the scroll bars.
         sketch.resizeCanvas(sketch.windowWidth, sketch.windowHeight);
-        // set background to gray
-        sketch.background(128);
+
       };
     };
     var homeCanvas = new p5(s);
