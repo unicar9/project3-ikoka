@@ -22,6 +22,7 @@ var $upload;
 
 $(document).on('drop', function (e) {
   $('#uploader').removeClass('placeholder');
+  $('#uploader').empty();
   e.stopPropagation();
   e.preventDefault();
 
