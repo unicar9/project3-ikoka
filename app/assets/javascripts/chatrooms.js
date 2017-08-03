@@ -35,7 +35,7 @@ $(document).ready(function() {
         };
         $.each(results, function(index, item) {
           response.results.push({
-            title: item.email
+            title: item.name
           });
         });
         return response
@@ -83,13 +83,13 @@ $(document).ready(function() {
   // add users to current chatroom============================
   $(document).on('click', '.add-user', function(){
 
-    var userEmail = $(this).prev().text();
-    console.log(userEmail);
+    var userName = $(this).prev().text();
+    console.log(userName);
     $.ajax({
       method: "POST",
       url: ' #{ /chatrooms/:id } ' ,
       data: {
-        email: userEmail
+        name: userName
       }
     })
     .done(function(res){
