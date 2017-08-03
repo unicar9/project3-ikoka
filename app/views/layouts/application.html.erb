@@ -37,7 +37,7 @@
 
                   <% else %>
 
-                    <div class="ui basic image label">
+                    <div class="ui label">
                       <%= link_to user_path(@current_user), class:"" do %>
                       <%= cl_image_tag(@current_user.avatar, :width=>100, :height=>100, :crop=>"crop", :gravity=>"face", :secure=>true, class:"ui right spaced avatar image")%><span><%= @current_user.name %></span>
 
