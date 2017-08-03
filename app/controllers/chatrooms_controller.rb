@@ -26,6 +26,7 @@ class ChatroomsController < ApplicationController
   def show
 
     @message = Message.new
+    
     @messages = @chatroom.messages
     @users = @chatroom.users
 

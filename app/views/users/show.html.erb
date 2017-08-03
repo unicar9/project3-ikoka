@@ -50,10 +50,17 @@
   <div class="ui three special link cards">
     <% if @user == @current_user %>
       <div class="card new-chatroom-action-card">
-        <div class="card-holder">
-          <%#= link_to new_chatroom_path  do %>
-            <h3><i class="add icon"></i>New Chatroom</h3>
-          <%# end %>
+        <div class="overlay-card-info">
+          <h2><i class="add icon"></i>New Chatroom</h2>
+        </div>
+        <div class="image">
+          <img src="/assets/cover3.png" alt="">
+        </div>
+        <div class="extra content">
+          <div>
+            <i class="users icon"></i>
+            Start to have fun~~~
+          </div>
         </div>
       </div>
     <% end %>
