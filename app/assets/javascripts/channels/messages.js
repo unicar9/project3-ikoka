@@ -39,7 +39,7 @@ App.messages = App.cable.subscriptions.create('MessagesChannel', {
       x: 400,
       y: 400,
       shape: Math.floor(randy(0, 3)),
-      size: randy(40, 80),
+      size: randy(50, 100),
       freq: randy(440, 800),
       hue: randy(0, 255),
       speedRotation: randy(-3,3),

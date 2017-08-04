@@ -62,7 +62,7 @@ $(document).ready(function() {
     $.getJSON('#{ /chatrooms/:id }').done(function(res){
 
       for (var i = 0; i < res.length; i++) {
-        var size = randy(10, 60);
+        var size = randy(50, 100);
         var speedRotation = randy(-3, 3);
         var hue = randy(0, 255);
 
