@@ -4,6 +4,7 @@
 
 $(document).ready(function() {
 
+
   // launch button animation and toggle sidebar=========================
   $(".launch.button").mouseenter(function(){
 		$(this).stop().animate({width: '120px'}, 300,
@@ -23,6 +24,37 @@ $(document).ready(function() {
     $('.ui.modal.search-invite').modal('show');
   });
 
+  var updatedList = function() {
+    $.getJSON({
+      method: "GET",
+      url: ' #{ /chatrooms/:id } '
+    })
+    .done(function(res){
+      $('#usersList').empty();
+      var users = [];
+      var usernames = [];
+
+      for (var i = 0; i < res.length; i++) {
+        var userRes = res[i].user
+        if (usernames.indexOf(userRes.name) === -1 ) {
+          users.push(userRes);
+          usernames.push(userRes.name);
+        }
+      }
+
+      console.log(users);
+
+      for (var i = 0; i < users.length; i++) {
+        user = users[i];
+        var $item = $('<div>').addClass('item').appendTo('#usersList');
+        var img = $('<img>').attr('src', user.avatar).addClass('ui avatar image').appendTo($item);
+        var $content = $('<div>').addClass('content').appendTo($item);
+        var $link = $('<a>').attr('href', '/users/' + user.id).text(user.name).addClass('header').appendTo($content);
+
+      }
+    });
+  };
+  updatedList();
 
   // semantic ui autocomplete search=========================
   $('.ui.search').search({
@@ -93,7 +125,9 @@ $(document).ready(function() {
       }
     })
     .done(function(res){
+      updatedList();
       $('.ui.modal.search-invite').modal('hide');
+
     });
   });
 
