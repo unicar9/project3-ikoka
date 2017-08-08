@@ -55,7 +55,7 @@ This project is the final project of General Assembly Sydney Web Development Imm
 * [jQuery-UI](https://jqueryui.com/): enables users to drag and drop their own images as avatar
 
 
-## Whishlist:
+## Wishlist:
 
 * Email notification and verification: send email when signup, reset password via email, share chatroom via email
 * Automatically broadcast a message to the room when new user enters the room(subscribe to the channel)
