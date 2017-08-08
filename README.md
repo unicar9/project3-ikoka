@@ -9,6 +9,7 @@ iKoka 爱好家 is a websocket powered chatroom where users' messages will gener
 This project is the final project of General Assembly Sydney Web Development Immersive course and it is a group project by: [Weijia Li](https://github.com/unicar9) and [Lingxiao Wang](https://github.com/douMax)
 
 ## Features:
+
 * User can send message to the chatroom and the message text will floating on the chatroom canvas with a random shape and a random colour
 
 * New message will trigger a note with random frequency using p5.sound library
@@ -36,10 +37,11 @@ This project is the final project of General Assembly Sydney Web Development Imm
 
 
 
-
 ## Bugs:
+
 * When inviting new users to the chatroom, if more than one results match the search query, the add buttons of each result will not align vertically
 * On heroku live version: Cropping and resizing avatar image will cause problems
+
 
 ## Framework and Libraries Used:
 
@@ -54,6 +56,7 @@ This project is the final project of General Assembly Sydney Web Development Imm
 
 
 ## Whishlist:
+
 * Email notification and verification: send email when signup, reset password via email, share chatroom via email
 * Automatically broadcast a message to the room when new user enters the room(subscribe to the channel)
 * Display the users list of the chatroom based on their active status
@@ -62,6 +65,7 @@ This project is the final project of General Assembly Sydney Web Development Imm
 * Connect the web app with Arduino development board and use sensors as extra input source to generate audio/visual effects
 
 ## Acknowledgments:
+
 The following libraries and online resources that make our site joyful and colourful:
 * The homepage's background effect is created using [particles.js](http://vincentgarreau.com/particles.js/), a lightweight, powerful and easy to use Javascript library to create particles
 * The auto-generated user avatar image is created using [ROBOHASH](https://robohash.org/)
