@@ -47,7 +47,10 @@ $(document).ready(function() {
       for (var i = 0; i < users.length; i++) {
         user = users[i];
         var $item = $('<div>').addClass('item').appendTo('#usersList');
-        var img = $('<img>').attr('src', user.avatar).addClass('ui avatar image').appendTo($item);
+        var $img = $.cloudinary.image(user.avatar, {transformation:
+                  {width: 150, height: 150},
+                }).addClass('ui image avatar').appendTo($item);
+
         var $content = $('<div>').addClass('content').appendTo($item);
         var $link = $('<a>').attr('href', '/users/' + user.id).text(user.name).addClass('header').appendTo($content);
 
@@ -95,7 +98,9 @@ $(document).ready(function() {
         $('#user-search-results').empty();
         for (var i = 0; i < res.length; i++) {
           var $userdiv = $('<div>').appendTo('#user-search-results');
-          $('<img>').attr('src', res[i].avatar).addClass('ui avatar image').appendTo($userdiv);
+          var $img = $.cloudinary.image(res[i].avatar, {transformation:
+                    {width: 150, height: 150},
+                    }).addClass('ui image avatar').appendTo($userdiv);
           $('<span>').text(res[i].name).appendTo($userdiv);
           $('<a>').text('add').addClass('add-user right floated ui mini button').appendTo($userdiv);
         }
