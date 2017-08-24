@@ -41,19 +41,17 @@ This project is the final project of General Assembly Sydney Web Development Imm
 ## Bugs:
 
 * When inviting new users to the chatroom, if more than one results match the search query, the add buttons of each result will not align vertically
-* On Heroku live version: Uploading cropped images will not work
-
 
 ## Framework and Libraries Used:
 
-* Ruby on Rails: we built the website's backend using Ruby on Rails
-* Websocket: we use Rails 5 Action Cable to manage the users' connection to the chatroom and broadcast the messages
-* [p5.js](p5js.org): p5.js is used to create visual effects
+* Ruby on Rails: we built the website's back-end using Ruby on Rails
+* Websocket: we use Rails 5 Action Cable to enable real-time communications
+* [p5.js](p5js.org): p5.js is used to create creative visual effects
 * [p5.dom](https://p5js.org/reference/#/libraries/p5.dom): p5.dom is used to allow interact with HTML objects
-* [p5.sound](https://p5js.org/reference/#/libraries/p5.sound): p5.sound library is used to generate sound when new message is sent
+* [p5.sound](https://p5js.org/reference/#/libraries/p5.sound): p5.sound library is used to generate a random music note when a new message is sent
 * [Semantic-UI](https://semantic-ui.com/): We used Semantic-UI as the main css framework to build the user interface
-* [Croppie JS](https://foliotek.github.io/Croppie/): is used for users to crop and resize the image before saving as their avatar
-* [jQuery-UI](https://jqueryui.com/): enables users to drag and drop their own images as avatar
+* [Croppie JS](https://foliotek.github.io/Croppie/): is used to create an UI for users to crop and resize the image they want to upload as their avatars
+* [jQuery-UI](https://jqueryui.com/): enables users to drag and drop their local images to the browser and upload directly
 
 
 ## Wishlist:
@@ -63,11 +61,11 @@ This project is the final project of General Assembly Sydney Web Development Imm
 * Display the users list of the chatroom based on their active status
 * Allow user to quit a chatroom
 * Limit the number of history messages when enter a chatroom
-* Connect the web app with Arduino development board and use sensors as extra input source to generate audio/visual effects
+* Connect the web app with Arduino development board and use sensors as extra input devises to generate audio/visual effects
 
 ## Acknowledgments:
 
-The following libraries and online resources made our site enjoyable and colourful:
+The following libraries and online resources were used to make our website enjoyable and colourful:
 * The homepage's background particle effect is created using [particles.js](http://vincentgarreau.com/particles.js/), a lightweight, powerful and easy to use Javascript library to create particles
 * The auto-generated user avatar image is created using [ROBOHASH](https://robohash.org/)
 
